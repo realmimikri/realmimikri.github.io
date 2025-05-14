@@ -1,0 +1,30 @@
+.nav {
+  grid-template-columns: 1fr fit-content(100%);
+  grid-template-areas: 'title toggles';
+}
+
+.nav__menu {
+  position: absolute;
+  background-color: var(--color-bg-alt);
+  width: 100vw;
+  height: calc(100vh - 4rem);
+  height: calc(100vh - 4rem);
+  height: calc(100dvh - 4rem);
+  top: -100vh;
+  top: -100lvh;
+  top: -100dvh;
+  z-index: -500;
+}
+
+.nav__title {
+  display: initial;
+  white-space: wrap;
+}
+
+.nav__author {
+  display: inline-block;
+}
+
+.nav__item {
+  padding: 5% 5% 0 0;
+}

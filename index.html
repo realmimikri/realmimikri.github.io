@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Mimikri's Portfolio Page" />
+  <meta name="author" content="mimi" />
+  
+  <title>Mimikri's Portfolio</title>
+  <!--
+      TODO: Fill icons when I already have the icons
+      <link rel="icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    -->
+  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preload" as="style" type="text/css" href="/css/global.css" onload="this.onload = null; this.rel = 'stylesheet';" />
+  <link rel="preload" as="style" type="text/css" href="/css/home.css" onload="this.onload = null; this.rel = 'stylesheet';" />
+  <link rel="preload" as="style" type="text/css" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" onload="this.onload = null; this.rel = 'stylesheet';" />
+  
+  <script>
+    window.Localizator = {
+      tryTranslateUnit: (unit) => {
+        Localizator.queue.push(unit);
+      },
+      queue: [],
+      COMING_SOON: true
+    }
+  </script>
+  <script async data-i18n-add="nav,hero:home/hero,about:home/about,skill:home/skill,work:home/work" src="/js/locale.js"></script>
+  
+  <noscript>
+    <link rel="stylesheet" type="text/css" href="/css/global.css" />
+    <link rel="stylesheet" type="text/css" href="/css/home.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" />
+  </noscript>
+  
+  <link rel="stylesheet" type="text/css" href="/css/global_max768.css" media="(max-width: 768px)" />
+  <link rel="stylesheet" type="text/css" href="/css/global_min768.css" media="(min-width: 768px)" />
+  
+  <meta property="og:title" content="Mimi's Portfolio" />
+  <meta property="og:description" content="Hewwo ♡! I'm mimi, a kawaii programmer! Could you visit my website, please? ♡" />
+  <meta property="og:url" content="https://realmimikri.github.io" />
+  
+  <style>
+  .love-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1999;
+  }
+  
+  .love {
+    position: absolute;
+    font-size: 24px;
+    color: #FF99FF;
+    opacity: 0.8;
+    user-select: none;
+    left: -100vw;
+  }
+  </style>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js" defer onload="if(window.onpageload) onpageload();"></script>
+  <script>
+    const getTheme = () => localStorage.getItem("theme");
+    const toggleTheme = (toggle) => {
+      if(toggle) localStorage.setItem('theme', getTheme() === 'dark' ? 'light' : 'dark');
+      document.documentElement.classList.toggle(
+        'dark',
+        getTheme() === 'dark'
+      );
+    };
+
+    toggleTheme(false);
+  </script>
+  
+  <header class="layout__header">
+    <nav class="nav">
+      <div class="nav__title">
+        <a href="/" class="nav__author">Mimikri</a>
+        <a href="#" class="nav__page-title">Portfolio</a>
+      </div>
+      
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <details class="nav__dropdown">
+              <summary class="sublist__title" data-i18n-global="nav.sections">Sections</summary>
+              <ul class="nav__sublist">
+                <li class="nav__item">
+                  <a href="#hero" class="nav__link hoverable" for="hero" data-i18n-global="nav.hero" onclick="toggleNavVisibility();">Hero</a>
+                </li>
+                <li class="nav__item">
+                  <a href="#about" class="nav__link hoverable" for="about" data-i18n-global="nav.about">About</a>
+                </li>
+                <li class="nav__item">
+                  <a href="#skills" class="nav__link hoverable" for="skills" data-i18n-global="nav.skills">Skills</a>
+                </li>
+                <li class="nav__item">
+                  <a href="#work" class="nav__link hoverable" for="work" data-i18n-global="nav.work">Work</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li class="nav__item">
+            <details class="nav__dropdown">
+              <summary class="sublist__title" data-i18n-global="nav.writings">Writings</summary>
+              <ul class="nav__sublist">
+                <li class="nav__item">
+                  <a href="/blog" class="nav__link hoverable" for="home" data-i18n-global="nav.blog">Blog</a>
+                </li>
+                <li class="nav__item">
+                  <a href="/diary" class="nav__link hoverable" for="about" data-i18n-global="nav.diary">Diary</a>
+                </li>
+                <li class="nav__item">
+                  <a href="/journal" class="nav__link hoverable" for="skills" data-i18n-global="nav.journal">Journal</a>
+                </li>
+                <li class="nav__item">
+                  <a href="/wiki.ng" class="nav__link hoverable" for="work" data-i18n-global="nav.wiking">Wiki.ng</a>
+                </li>
+              </ul>
+            </details>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="nav__toggles">
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="bx bx-menu"></i>
+        </div>
+        <div class="nav__toggle" id="theme-toggle" onclick="toggleTheme(true);">
+          <i class="bx bx-adjust"></i>
+        </div>
+        <span role="button" class="language-selector__label"><img width="40" src="https://flagcdn.com/us.svg" /></span>
+      </div>
+      
+    </nav>
+    
+    <div class="language__selector__list"></div>
+    
+    <script async src="/js/mobile_hamburger.js"></script>
+    <!-- <script async src="/js/language_selector.js"></script> -->
+    <script>Localizator.tryTranslateUnit('nav');</script>
+  </header>
+  
+  <div class="love-container"></div>
+  
+  <main class="layout__main">
+    <section class="section hero" id="hero">
+      <div class="hero__welcome">
+        <h1 class="hero__title"><span class="hoverable"><span data-i18n-hero="greeting">Hewwo </span><span style="color: #DF9EEB; user-select: none">♡</span></span><br /><span class="hoverable"><span data-i18n-hero="me">I'm</span> <span style="color: var(--color-accent);">Mimi</span>.</span><br /><span class="hoverable" data-i18n-hero="message">Your kawaii developer.</span></h1>
+        <a class="button" href="mailto:realmimikri@outlook.com" target="_blank" data-i18n-hero="contact">Contact Me</a>
+      </div>
+      <div class="hero__social hoverable">
+        <a class="hero__social-icon" href="https://github.com/realmimikri" alt="Mimikri's GitHub"><i class="bx bxl-github"></i></a>
+        <a class="hero__social-icon" href="https://realmimikri.github.io" alt="Mimikri's Personal Website"><i class="bx bx-world"></i></a>
+      </div>
+      <script>Localizator.tryTranslateUnit('hero')</script>
+    </section>
+    <section class="section section--right about" id="about">
+      <div>
+        <h2 class="section__title hoverable" data-i18n-global="nav.about">About</h2>
+        <div>
+          <h3 class="section__subtitle hoverable" data-i18n-about="whoami">I am Mimi.</h3>
+          <p class="about__desc hoverable" data-i18n-about="description"></p>
+        </div>
+      </div>
+      <script>Localizator.tryTranslateUnit('about')</script>
+    </section>
+    
+    <section class="section section--left skills" id="skills">
+      <div>
+        <h2 class="section__title hoverable" data-i18n-global="nav.skills">Skills</h2>
+        <div class="skills__list">
+          <details class="skills__skill hoverable">
+            <summary class="skills__skill-title skill__metadata--highlight">
+              <div class="skill__metadata">
+                <span class="skill__name"><i class="bx bxl-html5 skill__icon"></i>HTML5</span>
+                <span class="skill__percentage skill__percentage--highlight">95%</span>
+              </div>
+              <progress class="skill__progress" value="95" max="100"></progress>
+            </summary>
+            <p class="skill__desc" data-i18n-skills="html5.description">HTML5 is the latest major version of the HTML standard, designed to structure and present content on the web more efficiently. It introduced new semantic elements (like &lt;article&gt;, &lt;section&gt;, &lt;header&gt;), built-in media support with &lt;audio&gt; and &lt;video&gt;, and powerful APIs for things like offline storage, drag-and-drop, geolocation, and canvas-based graphics. It also dropped outdated tags (like &lt;font&gt;) and emphasized cleaner, more accessible, and mobile-friendly code. In short: it made the web smarter, faster, and more app-like.</p>
+          </details>
+          <details class="skills__skill hoverable">
+            <summary class="skills__skill-title">
+              <div class="skill__metadata">
+                <span class="skill__name"><i class="bx bxl-css3 skill__icon"></i>CSS3</span>
+                <span class="skill__percentage skill__percentage--highlight">76%</span>
+              </div>
+              <progress class="skill__progress" value="76" max="100"></progress>
+            </summary>
+            <p class="skill__desc" data-i18n-skills="css3.description">CSS3 is the latest evolution of Cascading Style Sheets, bringing powerful features that let developers create modern, responsive, and visually rich websites without relying heavily on JavaScript or images. It introduced modules like Flexbox and Grid for layout control, transitions and animations for smoother interactions, media queries for responsive design, and custom properties (variables) for cleaner, more maintainable code.</p>
+          </details>
+          <details class="skills__skill hoverable">
+            <summary class="skills__skill-title">
+              <div class="skill__metadata">
+                <span class="skill__name"><i class="bx bxl-javascript skill__icon"></i>JS</span>
+                <span class="skill__percentage skill__percentage--highlight">85%</span>
+              </div>
+              <progress class="skill__progress" value="85" max="100"></progress>
+            </summary>
+            <p class="skill__desc" data-i18n-skills="javascript.description">JavaScript is the dynamic scripting language of the web, designed to bring interactivity, logic, and behavior to static HTML/CSS pages. It's used for everything from handling user input and updating content in real-time to building full-scale web apps, with powerful APIs, event-driven architecture, and widespread support across all modern browsers. With the rise of frameworks like React and Node.js, JavaScript has become the backbone of both frontend and backend development.</p>
+          </details>
+          <details class="skills__skill hoverable">
+            <summary class="skills__skill-title">
+              <div class="skill__metadata">
+                <span class="skill__name"><i class="bx bx-code skill__icon"></i>C</span>
+                <span class="skill__percentage skill__percentage--highlight">68%</span>
+              </div>
+              <progress class="skill__progress" value="68" max="100"></progress>
+            </summary>
+            <p class="skill__desc" data-i18n-skills="clang.description">C is a low-level, high-performance programming language that gives you direct control over memory and system resources. Originally developed in the 1970s, it became the backbone of modern operating systems, embedded systems, and tools like compilers. With its minimal runtime and deterministic behavior, C is often chosen when speed, efficiency, and hardware-level access matter. It’s powerful but unforgiving — you manage your own memory, deal with pointers, and take full responsibility for safety.</p>
+          </details>
+          <details class="skills__skill hoverable">
+            <summary class="skills__skill-title">
+              <div class="skill__metadata">
+                <span class="skill__name"><i class="bx bx-code-curly skill__icon"></i>C++</span>
+                <span class="skill__percentage">12%</span>
+              </div>
+              <progress class="skill__progress" value="12" max="100"></progress>
+            </summary>
+            <p class="skill__desc" data-i18n-skills="cpp.description">C++ builds on C by adding object-oriented programming, templates, exception handling, and more — effectively blending low-level control with high-level abstractions. It lets you write both system-level code and complex software architectures in the same language. Used in everything from game engines and real-time simulations to finance and high-performance apps, C++ is known for its performance, complexity, and massive feature set. It’s like driving a race car: powerful, fast, but it’ll bite you if you lose focus.</p>
+          </details>
+          <details class="skills__skill hoverable">
+            <summary class="skills__skill-title">
+              <div class="skill__metadata">
+                <span class="skill__name"><i class="bx bx-code skill__icon"></i>Java</span>
+                <span class="skill__percentage">78%</span>
+              </div>
+              <progress class="skill__progress" value="78" max="100"></progress>
+            </summary>
+            <p class="skill__desc" data-i18n-skills="java.description">Java is a high-level, object-oriented language designed to be portable, secure, and easy to run across platforms — “write once, run anywhere.” It compiles to bytecode that runs on the Java Virtual Machine (JVM), making it platform-independent. Java has strict typing, garbage collection, and a massive standard library, which made it a go-to for enterprise software, Android development, and big systems. It's verbose but stable, with a strong ecosystem and long-term maintainability at its core.</p>
+          </details>
+          <details class="skills__skill hoverable">
+            <summary class="skills__skill-title">
+              <div class="skill__metadata">
+                <span class="skill__name"><i class="bx bx-code-alt skill__icon"></i>Python</span>
+                <span class="skill__percentage">5%</span>
+              </div>
+              <progress class="skill__progress" value="5" max="100"></progress>
+            </summary>
+            <p class="skill__desc" data-i18n-skills="python.description">Python is a high-level, interpreted language known for its simplicity, readability, and massive versatility. With clean, human-like syntax, it’s beginner-friendly but powerful enough for professionals building everything from web apps and automation scripts to AI models and scientific computing. Python thrives on an enormous ecosystem of libraries and frameworks (like Django, NumPy, and TensorFlow), and its “batteries included” philosophy makes rapid development feel effortless. It trades raw speed for ease of use — but in the right hands, it’s a damn sharp tool.</p>
+          </details>
+        </div>
+      </div>
+      <script>Localizator.tryTranslateUnit('skills')</script>
+    </section>
+    <section class="section section--right work" id="work">
+      <div>
+        <h2 class="section__title hoverable" data-i18n-global="nav.work">Works</h2>
+        <div class="card-list">
+          <div class="card hoverable">
+            <div class="card__image card__image--noimage" role="img" aria-label="Portfolio Project Preview"></div>
+            <h3 data-i18n-work="portfolio">Portfolio</h3>
+            <p data-i18n-work="portfolio.desc">This is my portfolio; this website.</p>
+          </div>
+        </div>
+      </div>
+      <script>Localizator.tryTranslateUnit('work')</script>
+    </section>
+  </main>
+  <footer class="layout__footer">
+    <h2 class="footer__title">Mimikri</h2>
+    <div class="footer__content">
+      <div class="footer__metadata">
+        <p class="footer__copyright">© Mimikri, all rights reserved.</p>
+        <div class="footer__social">
+          <a class="footer__social-icon" href="https://github.com/nght-owl" alt="NightOwl's GitHub"><i class="bx bxl-github"></i></a>
+          <a class="footer__social-icon" href="https://nght-owl.github.io" alt="NightOwl's Personal Website"><i class="bx bx-world"></i></a>
+        </div>
+      </div>
+      <div class="footer__links-container">
+        <div class="footer__links">
+          <h3 class="footer__subtitle">Writings</h3>
+          <a href="/blog" data-i18n-global="nav.blog">Blog</a>
+          <a href="/journal" data-i18n-global="nav.journal">Journal</a>
+          <a href="/diary" data-i18n-global="nav.diary">Diary</a>
+          <a href="/wiki.ng" data-i18n-global="nav.wiking">wiki.ng</a>
+        </div>
+        <div class="footer__links">
+          <h3 class="footer__subtitle">Projects</h3>
+          <a href="/todolist.html">TODO List</a>
+          <a href="/#">Placeholder</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    const loveContainer = document.querySelector('.love-container');
+    const loveSpans = Array(20).fill(1).map(() => {
+      const love = document.createElement('span');
+      love.classList.add('love');
+      love.textContent = '♡';
+      loveContainer.append(love);
+      return love;
+    });
+    
+    function createLove() {
+      const love = loveSpans[Math.floor(Math.random() * loveSpans.length)]
+      
+      // Random starting position
+      love.style.left = `${Math.random() * 100}%`;
+      love.style.bottom = '0';
+      
+      // Random scale and rotation
+      const scale = 0.8 + Math.random() * 1.5;
+      love.style.transform = `scale(${scale}) rotate(${Math.random() * 360}deg)`;
+      
+      // Animate
+      gsap.to(love, {
+        y: -window.innerHeight - 100,
+        x: (Math.random() - 0.5) * 100,
+        opacity: 0,
+        duration: 3 + Math.random() * 2,
+        ease: 'power1.out',
+        onComplete: () => {
+          love.style.transition = 'none';
+          love.style.transform = 'scale(1)';
+          love.style.opacity = '0.8';
+          love.style.left = `-100vw`;
+          love.style.bottom = '0';
+          
+          setTimeout(() => {love.style.transition = 'transform 3s, opacity 3s, bottom 3s'}, 10);
+        }
+      });
+    }
+  </script>
+  
+  <script>
+    let _pageloadedalready = false;
+    function onpageload() {
+      if(_pageloadedalready) return;
+      _pageloadedalready = true;
+    
+      // Generate one every 300ms
+      setInterval(createLove, 300);
+      
+      let lastY = 0;
+      const HERO = document.getElementById('hero');
+      
+      gsap.fromTo(HERO,
+      { opacity: 0, y: '-100vh' },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'back.out'
+      });
+      
+      gsap.set('.nav', { opacity: 0, y: -100 });
+      
+      setTimeout(() => {
+        gsap.to('.nav',
+        {
+          opacity: 1,
+          y: 0,
+          scrollTrigger: {
+            trigger: HERO,
+            start: 'top top',
+            end: 'bottom top+=10%',
+            scrub: true
+          }
+        });
+      }, 1000);
+      
+      gsap.utils.toArray('.about,.skills,.work,.skills__list,.card-list').forEach(section => {
+        // Initial state
+        const awayPos = -100;
+        section._isRevealed = false;
+        gsap.set(section, { opacity: Number(section._isRevealed), y: awayPos });
+        
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top 90%',
+          end: 'bottom top+=50%',
+          onUpdate: (self) => {
+            const bounds = section.getBoundingClientRect();
+            const halfViewport = window.innerHeight / 2;
+            
+            // Check: top reached halfway & bottom still visible
+            const shouldReveal = bounds.top - 100 <= halfViewport && bounds.bottom + 100 >= halfViewport;
+            
+            if (shouldReveal && !section._isRevealed) {
+              gsap.to(section,
+              {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: 'power3.inOut',
+                overwrite: 'auto'
+              });
+              lastY = bounds.top;
+              section._isRevealed = true;
+            } else if (!shouldReveal && section._isRevealed) {
+              gsap.to(section,
+              {
+                opacity: 0,
+                y: awayPos,
+                duration: 1,
+                ease: 'power1.in',
+                overwrite: 'auto'
+              });
+              section._isRevealed = false;
+            }
+          }
+        });
+      });
+    }
+    
+    window.addEventListener('DOMContentLoaded', onpageload);
+    
+    document.querySelectorAll('details').forEach(detail => {
+      detail.addEventListener('toggle', () => {
+        requestAnimationFrame(() => ScrollTrigger.refresh());
+      });
+    });
+  </script>
+</body>
+</html>
