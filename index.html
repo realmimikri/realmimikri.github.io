@@ -14,10 +14,14 @@
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     -->
   
+  <!-- ALL OF THIS ARE PRELOAD -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="preload" as="style" type="text/css" href="/css/global.css" onload="this.onload = null; this.rel = 'stylesheet';" />
   <link rel="preload" as="style" type="text/css" href="/css/home.css" onload="this.onload = null; this.rel = 'stylesheet';" />
+  <link rel="preload" as="style" type="text/css" href="/css/global_max768.css" onload="this.onload = null; this.rel = 'stylesheet'; this.media = '(max-width: 768px)';" />
+  <link rel="preload" as="style" type="text/css" href="/css/global_min768.css" onload="this.onload = null; this.rel = 'stylesheet'; this.media = '(min-width: 768px)';" />
   <link rel="preload" as="style" type="text/css" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" onload="this.onload = null; this.rel = 'stylesheet';" />
   
   <script>
@@ -29,25 +33,23 @@
       COMING_SOON: true
     }
   </script>
-  <script async data-i18n-add="nav,hero:home/hero,about:home/about,skill:home/skill,work:home/work" src="/js/locale.js"></script>
   
   <noscript>
     <link rel="stylesheet" type="text/css" href="/css/global.css" />
     <link rel="stylesheet" type="text/css" href="/css/home.css" />
+    <link rel="stylesheet" type="text/css" href="/css/global_max768.css" media="(max-width: 768px)" />
+    <link rel="stylesheet" type="text/css" href="/css/global_min768.css" media="(min-width: 768px)" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" />
   </noscript>
   
-  <link rel="stylesheet" type="text/css" href="/css/global_max768.css" media="(max-width: 768px)" />
-  <link rel="stylesheet" type="text/css" href="/css/global_min768.css" media="(min-width: 768px)" />
-  
   <meta property="og:title" content="Mimi's Portfolio" />
-  <meta property="og:description" content="Hewwo ♡! I'm mimi, a kawaii programmer! Could you visit my website, please? ♡" />
+  <meta property="og:description" content="Hello! I'm mimikri, but you can call me Mimi-san. I am a programmer who codes with a phone, life sucks." />
   <meta property="og:url" content="https://realmimikri.github.io" />
   
   <meta name="google-site-verification" content="ybFYqjdr5BOwZmc2RrYvwUbkWDeaU0R_D6H-RtgI7ck" />
   
   <style>
-  .love-container {
+  .upward__container {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -58,30 +60,38 @@
     z-index: -1999;
   }
   
-  .love {
+  .chameleon {
     position: absolute;
-    font-size: 24px;
-    color: #FF99FF;
     opacity: 0.8;
     user-select: none;
     left: -100vw;
   }
   </style>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollToPlugin.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js" defer onload="if(window.onpageload) onpageload();"></script>
+  <script src="/js/home.nav.js" defer></script>
+  <script src="/js/home.scroll.js" defer></script>
 </head>
 <body>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js" defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js" defer onload="if(window.onpageload) onpageload();"></script>
   <script>
-    const getTheme = () => localStorage.getItem("theme");
-    const toggleTheme = (toggle) => {
-      if(toggle) localStorage.setItem('theme', getTheme() === 'dark' ? 'light' : 'dark');
-      document.documentElement.classList.toggle(
-        'dark',
-        getTheme() === 'dark'
-      );
+    const isOnDarkMode = () => localStorage.getItem('dark-mode-enabled') === 'true';
+    const toggleDarkMode = (toggle) => {
+      let isDarkModeEnabled = isOnDarkMode();
+      if(toggle) {
+        isDarkModeEnabled = !isDarkModeEnabled;
+        localStorage.setItem('dark-mode-enabled', isDarkModeEnabled);
+      } else if(typeof isDarkModeEnabled !== 'boolean') {
+        return;
+      }
+      
+      document
+        .documentElement
+        .classList
+        .toggle('dark', isDarkModeEnabled);
     };
-
-    toggleTheme(false);
+    
+    toggleDarkMode(false);
   </script>
   
   <header class="layout__header">
@@ -138,33 +148,69 @@
         <div class="nav__toggle" id="nav-toggle">
           <i class="bx bx-menu"></i>
         </div>
-        <div class="nav__toggle" id="theme-toggle" onclick="toggleTheme(true);">
+        <div class="nav__toggle" id="theme-toggle" onclick="toggleDarkMode(true);">
           <i class="bx bx-adjust"></i>
         </div>
         <span role="button" class="language-selector__label"><img width="40" src="https://flagcdn.com/us.svg" /></span>
       </div>
-      
     </nav>
     
     <div class="language__selector__list"></div>
     
-    <script async src="/js/mobile_hamburger.js"></script>
-    <!-- <script async src="/js/language_selector.js"></script> -->
+    <script src="/js/mobile_hamburger.js" async></script>
+    <!-- <script  data-i18n-sources="nav,hero:home/hero,about:home/about,skill:home/skill,work:home/work" src="/js/language_selector.js" async></script> -->
     <script>Localizator.tryTranslateUnit('nav');</script>
   </header>
   
-  <div class="love-container"></div>
+  <div class="upward__container">
+    <svg class="chameleon upward__item" height="5rem" width="5rem" viewBox="0 0 462.323 462.323">
+      <g>
+        <path d="M429.447,197.71c-27.75-27.75-65.93-55.043-104.75-74.881c-30.781-15.73-76.876-34.481-121.667-34.481
+          c-27.104,0-53.769,8.193-76.623,23.326l0.815-32.817l-8.252,0.051c-19.077,0.119-37.187,7.365-50.993,20.403
+          c-13.015,12.291-21.221,28.771-23.283,46.625C17.788,157.877,0,184.582,0,213.707v35.61h111.967
+          c3.623,2.435,5.871,6.774,6.024,11.772c-15.371,4.059-26.192,18.824-26.192,37.228v8H134h21h36h14h56v-44.685
+          c0-4.043,2.405-7.263,5.841-9.394c2.612-1.62,5.682-2.347,8.756-2.333l25.278,0.117c-0.296,0.284-0.6,0.556-0.891,0.847
+          c-14.134,14.135-21.918,32.927-21.918,52.917s7.784,38.783,21.919,52.919c17.846,17.84,41.288,26.761,64.73,26.76
+          c23.442,0,46.885-8.92,64.732-26.761C473.281,312.87,473.281,241.545,429.447,197.71z M147,267.791
+          c-6.309,5.376-10.712,13.215-12.321,22.527h-25.716c2.335-7.762,8.156-14.117,17.227-14.332L134,275.8v-14.162
+          c0-4.368-0.841-8.538-2.387-12.32l14.21,0.013c0.79,3.458,1.177,7.471,1.177,12.308V267.791z M203.834,249.578l14.385,0.067
+          c-0.834,3.783-1.278,7.68-1.301,11.652c-4.395,1.266-8.417,3.406-11.918,6.239v-5.903C205,257.472,204.597,253.444,203.834,249.578
+          z M418.134,345.39c-29.456,29.446-77.383,29.445-106.837,0.001c-11.112-11.112-17.232-25.888-17.232-41.604
+          s6.12-30.491,17.232-41.603c17.727-17.727,46.57-17.726,64.296,0c6.571,6.57,10.189,15.304,10.189,24.592
+          c0,9.286-3.618,18.017-10.191,24.587c-4.95,4.953-11.533,7.682-18.536,7.682s-13.586-2.729-18.538-7.684
+          c-3.66-3.66-5.675-8.524-5.675-13.699c0-5.174,2.015-10.039,5.674-13.697c5.419-5.419,14.238-5.419,19.657,0l11.313-11.314
+          c-11.657-11.656-30.626-11.655-42.284,0c-6.681,6.682-10.361,15.563-10.361,25.012s3.68,18.331,10.358,25.01
+          c7.973,7.979,18.576,12.373,29.854,12.373s21.881-4.394,29.85-12.369c9.594-9.588,14.877-22.337,14.877-35.899
+          c0-13.562-5.283-26.313-14.875-35.906c-11.081-11.08-25.372-17.028-39.907-17.857c-5.677-0.324-69.611,0.304-69.611,0.304
+          c-8.03,0-15.748,2.559-21.733,7.206C248.784,245.858,245,253.355,245,261.633v28.685h-36.572
+          c2.404-7.478,8.199-13.842,17.001-14.314l7.571-0.406v-13.964c0-22.781,19.913-41.315,44.389-41.315H289v-16h-11.611
+          c-15.849,0-30.872,5.751-42.227,16.194c-4.268,3.926-7.837,8.359-10.661,13.163l-26.373-0.124
+          c-9.505-17.719-28.039-29.233-50.325-29.233H135v16h12.803c23.871,0,41.197,17.376,41.197,41.315v28.685h-34h-3.795
+          c2.647-9.582,10.029-14.172,16.985-14.337l7.81-0.187v-14.161c0-15.594-9.61-26.468-24.297-28.096L16,233.318v-19.61
+          c0-23.942,15.43-45.828,38.395-54.461l4.994-1.877c0,0,0.877-6.096,0.995-7.504c1.212-14.93,7.811-28.752,18.58-38.922
+          c8.836-8.345,19.921-13.671,31.84-15.411l-1.244,50.095l13.616-11.549c22.604-19.172,50.964-29.73,79.855-29.73
+          c71.725,0,164.359,53.932,215.104,104.677C455.729,246.62,455.729,307.795,418.134,345.39z"/>
+        <path d="M83.821,161.165c-16.904,0-30.657,13.753-30.657,30.657s13.752,30.656,30.657,30.656s30.657-13.752,30.657-30.656
+          S100.726,161.165,83.821,161.165z M83.821,206.478c-8.082,0-14.657-6.575-14.657-14.656c0-8.082,6.575-14.657,14.657-14.657
+          s14.657,6.575,14.657,14.657C98.478,199.903,91.903,206.478,83.821,206.478z"/>
+      </g>
+    </svg>
+  </div>
+  <script src="/js/upward_emitter.js" async onload="_upwardEmitter.init(5, 'fill', 2333, 300);"></script>
   
   <main class="layout__main">
     <section class="section hero" id="hero">
-      <div class="hero__welcome">
-        <h1 class="hero__title"><span class="hoverable"><span data-i18n-hero="greeting">Hewwo </span><span style="color: #DF9EEB; user-select: none">♡</span></span><br /><span class="hoverable"><span data-i18n-hero="me">I'm</span> <span style="color: var(--color-accent);">Mimi</span>.</span><br /><span class="hoverable" data-i18n-hero="message">Your kawaii developer.</span></h1>
+      <div>
+        <div class="hero__welcome">
+        <h1 class="hero__title"><span class="hoverable"><span data-i18n-hero="greeting">Yo</span><span style="color: var(--color-text-muted);">!</span></span><br /><span class="hoverable"><span data-i18n-hero="me">I'm</span> <span style="color: var(--color-accent);">Mimi</span>.</span><br /><span class="hoverable">A <span id="profession">Web Developer</span></span></h1>
         <a class="button" href="mailto:realmimikri@outlook.com" target="_blank" data-i18n-hero="contact">Contact Me</a>
       </div>
       <div class="hero__social hoverable">
         <a class="hero__social-icon" href="https://github.com/realmimikri" alt="Mimikri's GitHub"><i class="bx bxl-github"></i></a>
         <a class="hero__social-icon" href="https://realmimikri.github.io" alt="Mimikri's Personal Website"><i class="bx bx-world"></i></a>
       </div>
+      </div>
+      <script src="/js/home.landing.js" async></script>
       <script>Localizator.tryTranslateUnit('hero')</script>
     </section>
     <section class="section section--right about" id="about">
@@ -172,7 +218,8 @@
         <h2 class="section__title hoverable" data-i18n-global="nav.about">About</h2>
         <div>
           <h3 class="section__subtitle hoverable" data-i18n-about="whoami">I am Mimi.</h3>
-          <p class="about__desc hoverable" data-i18n-about="description"></p>
+          <p class="about__desc hoverable" data-i18n-about="description-1">I loves anime. My hobby are doing nothing but shits.</p>
+          <p class="about__desc hoverable" data-i18n-about="description-1">In the future, I have a dream of making my own operating system, game engine, and game.</p>
         </div>
       </div>
       <script>Localizator.tryTranslateUnit('about')</script>
@@ -296,136 +343,5 @@
       </div>
     </div>
   </footer>
-  
-  <script>
-    const loveContainer = document.querySelector('.love-container');
-    const loveSpans = Array(20).fill(1).map(() => {
-      const love = document.createElement('span');
-      love.classList.add('love');
-      love.textContent = '♡';
-      loveContainer.append(love);
-      return love;
-    });
-    
-    function createLove() {
-      const love = loveSpans[Math.floor(Math.random() * loveSpans.length)]
-      
-      // Random starting position
-      love.style.left = `${Math.random() * 100}%`;
-      love.style.bottom = '0';
-      
-      // Random scale and rotation
-      const scale = 0.8 + Math.random() * 1.5;
-      love.style.transform = `scale(${scale}) rotate(${Math.random() * 360}deg)`;
-      
-      // Animate
-      gsap.to(love, {
-        y: -window.innerHeight - 100,
-        x: (Math.random() - 0.5) * 100,
-        opacity: 0,
-        duration: 3 + Math.random() * 2,
-        ease: 'power1.out',
-        onComplete: () => {
-          love.style.transition = 'none';
-          love.style.transform = 'scale(1)';
-          love.style.opacity = '0.8';
-          love.style.left = `-100vw`;
-          love.style.bottom = '0';
-          
-          setTimeout(() => {love.style.transition = 'transform 3s, opacity 3s, bottom 3s'}, 10);
-        }
-      });
-    }
-  </script>
-  
-  <script>
-    let _pageloadedalready = false;
-    function onpageload() {
-      if(_pageloadedalready) return;
-      _pageloadedalready = true;
-    
-      // Generate one every 300ms
-      setInterval(createLove, 300);
-      
-      let lastY = 0;
-      const HERO = document.getElementById('hero');
-      
-      gsap.fromTo(HERO,
-      { opacity: 0, y: '-100vh' },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: 'back.out'
-      });
-      
-      gsap.set('.nav', { opacity: 0, y: -100 });
-      
-      setTimeout(() => {
-        gsap.to('.nav',
-        {
-          opacity: 1,
-          y: 0,
-          scrollTrigger: {
-            trigger: HERO,
-            start: 'top top',
-            end: 'bottom top+=10%',
-            scrub: true
-          }
-        });
-      }, 1000);
-      
-      gsap.utils.toArray('.about,.skills,.work,.skills__list,.card-list').forEach(section => {
-        // Initial state
-        const awayPos = -100;
-        section._isRevealed = false;
-        gsap.set(section, { opacity: Number(section._isRevealed), y: awayPos });
-        
-        ScrollTrigger.create({
-          trigger: section,
-          start: 'top 90%',
-          end: 'bottom top+=50%',
-          onUpdate: (self) => {
-            const bounds = section.getBoundingClientRect();
-            const halfViewport = window.innerHeight / 2;
-            
-            // Check: top reached halfway & bottom still visible
-            const shouldReveal = bounds.top - 100 <= halfViewport && bounds.bottom + 100 >= halfViewport;
-            
-            if (shouldReveal && !section._isRevealed) {
-              gsap.to(section,
-              {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: 'power3.inOut',
-                overwrite: 'auto'
-              });
-              lastY = bounds.top;
-              section._isRevealed = true;
-            } else if (!shouldReveal && section._isRevealed) {
-              gsap.to(section,
-              {
-                opacity: 0,
-                y: awayPos,
-                duration: 1,
-                ease: 'power1.in',
-                overwrite: 'auto'
-              });
-              section._isRevealed = false;
-            }
-          }
-        });
-      });
-    }
-    
-    window.addEventListener('DOMContentLoaded', onpageload);
-    
-    document.querySelectorAll('details').forEach(detail => {
-      detail.addEventListener('toggle', () => {
-        requestAnimationFrame(() => ScrollTrigger.refresh());
-      });
-    });
-  </script>
 </body>
 </html>

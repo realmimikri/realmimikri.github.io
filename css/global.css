@@ -8,24 +8,37 @@
 }
 
 :root {
-  --color-bg: #F0E6EF;
-  --color-bg-alt: #f9f9f9;
+  --color-bg: #E6EFF0;
+  --color-bg-alt: #F9F9F9;
   --color-text: #111111;
   --color-text-muted: #666666;
-  --color-primary: #F0A6CA;
-  --color-primary-inverse: #F06AAC;
-  --color-secondary: #9C89B8;
-  --color-border: #dddddd;
-  --color-accent: #F06AAC;
-  --color-link: #F06AAC;
+  --color-primary: #A6CAF0;
+  --color-primary-inverse: #6AACF0;
+  --color-secondary: #1968C3;
+  --color-border: #DDDDDD;
+  --color-accent: #6AACF0;
+  --color-link: #6AACF0;
 }
 
 :root.dark {
-  --color-bg: #222222;
-  --color-bg-alt: #303030;
-  --color-text: #F0E6EF;
+  colors-scheme: dark;
+  --color-bg: #100F19;
+  --color-bg-alt: #060606;
+  --color-text: #EEEEEE;
+  --color-secondary: #899CB8;
   --color-border: #444444;
-  --color-link: #EFC3E6;
+  --color-link: #C3E6EF;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #100F19;
+    --color-bg-alt: #060606;
+    --color-text: #EEEEEE;
+    --color-secondary: #899CB8;
+    --color-border: #444444;
+    --color-link: #C3E6EF;
+  }
 }
 
 *, *::before, *::after {
@@ -126,6 +139,7 @@ span.hoverable {
 }
 
 .layout__footer {
+  background-color: var(--color-bg-alt);
   padding: 5% 4%;
 }
 

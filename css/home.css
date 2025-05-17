@@ -1,3 +1,12 @@
+* {
+  user-select: none;
+}
+
+#hero, .nav {
+  transform: translateY(-100vh);
+  opacity: 0;
+}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -5,7 +14,6 @@
   
   min-height: 100vh;
   min-height: 100lvh;
-  min-height: 100dvh;
   padding: 5%; 
 }
 
@@ -17,6 +25,7 @@
   text-align: left;
   
   min-width: 50vw;
+  max-width: 50vw;
 }
 
 .section--right {
@@ -31,7 +40,7 @@
   display: flex;
   flex-direction: row !important;
   border-left: var(--color-primary) 2px solid;
-  margin: 4% 3%;
+  margin: 8% 1%;
   gap: 2%;
 }
 
@@ -51,7 +60,9 @@
 
 .skills__skill-title {
   list-style: none;
+  appearance: none;
   -webkit-appearance: none;
+  border-bottom: var(--color-border) 2px solid;
 }
 
 .skills__skill-title::-webkit-details-marker {
@@ -68,6 +79,46 @@
   font-weight: bold;
 }
 
+.skill__metadata {
+  display: flex;
+  justify-content: space-between;
+}
+
+.skill__name {
+  display: flex;
+  align-items: center;
+  padding: 0.5% 1% 0.5% 1%;
+  gap: 10%;
+}
+
+.skill__icon {
+  color: var(--color-accent);
+}
+
+.skill__progress {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  width: min(100%, 230px);
+}
+
+.skill__progress::-webkit-progress-bar {
+  background: transparent;
+}
+
+.skill__progress::-webkit-progress-value {
+  background: var(--color-border);
+  border-bottom: var(--color-secondary) 1px solid;
+  transition: width 0.3s ease;
+  border-radius: 0.25rem;
+}
+
+.skill__progress::-moz-progress-bar {
+  background: var(--color-border);
+  transition: width 0.3s ease;
+  border-radius: 0.25rem;
+}
+
 .card-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -78,6 +129,11 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 0.5rem;
+}
+
+.card__image--noimage {
+  background-color: transparent;
+  background-image: linear-gradient(to bottom, var(--color-bg-alt), transparent 99%, var(--color-bg-alt));
 }
 
 .card__image--noimage::after {
@@ -95,6 +151,7 @@
   }
   
   .section > div {
+    max-width: 100%;
     width: calc(100vw - 10%);
   }
   
