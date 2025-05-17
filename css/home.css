@@ -21,7 +21,6 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
-  align-items: left;
   text-align: left;
   
   min-width: 50vw;

@@ -70,8 +70,9 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollToPlugin.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js" defer onload="if(window.onpageload) onpageload();"></script>
-  <script src="/js/home.nav.js" defer></script>
   <script src="/js/home.scroll.js" defer></script>
+  <script src="/js/home.nav.js" defer></script>
+  <script src="/js/home.landing.js" defer></script>
 </head>
 <body>
   <script>
@@ -202,15 +203,14 @@
     <section class="section hero" id="hero">
       <div>
         <div class="hero__welcome">
-        <h1 class="hero__title"><span class="hoverable"><span data-i18n-hero="greeting">Yo</span><span style="color: var(--color-text-muted);">!</span></span><br /><span class="hoverable"><span data-i18n-hero="me">I'm</span> <span style="color: var(--color-accent);">Mimi</span>.</span><br /><span class="hoverable">A <span id="profession">Web Developer</span></span></h1>
-        <a class="button" href="mailto:realmimikri@outlook.com" target="_blank" data-i18n-hero="contact">Contact Me</a>
+          <h1 class="hero__title"><span class="hoverable"><span data-i18n-hero="greeting">Yo</span><span style="color: var(--color-text-muted);">!</span></span><br /><span class="hoverable"><span data-i18n-hero="me">I'm</span> <span style="color: var(--color-accent);">Mimi</span>.</span><br /><span class="hoverable">A <span id="profession">Web Developer</span></span></h1>
+          <a class="button" href="mailto:realmimikri@outlook.com" target="_blank" data-i18n-hero="contact">Contact Me</a>
+        </div>
+        <div class="hero__social hoverable">
+          <a class="hero__social-icon" href="https://github.com/realmimikri" alt="Mimikri's GitHub"><i class="bx bxl-github"></i></a>
+          <a class="hero__social-icon" href="https://realmimikri.github.io" alt="Mimikri's Personal Website"><i class="bx bx-world"></i></a>
+        </div>
       </div>
-      <div class="hero__social hoverable">
-        <a class="hero__social-icon" href="https://github.com/realmimikri" alt="Mimikri's GitHub"><i class="bx bxl-github"></i></a>
-        <a class="hero__social-icon" href="https://realmimikri.github.io" alt="Mimikri's Personal Website"><i class="bx bx-world"></i></a>
-      </div>
-      </div>
-      <script src="/js/home.landing.js" async></script>
       <script>Localizator.tryTranslateUnit('hero')</script>
     </section>
     <section class="section section--right about" id="about">
