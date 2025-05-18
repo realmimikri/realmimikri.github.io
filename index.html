@@ -84,7 +84,7 @@
         isDarkModeEnabled = !isDarkModeEnabled;
         localStorage.setItem('dark-mode-enabled', isDarkModeEnabled);
       } else if(typeof isDarkModeEnabled !== 'boolean') {
-        return;
+        isDarkModeEnabled = window.matchMedia && matchMedia('(prefers-color-scheme: dark)');
       }
       
       document
