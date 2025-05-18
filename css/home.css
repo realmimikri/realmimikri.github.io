@@ -7,6 +7,19 @@
   opacity: 0;
 }
 
+.main__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  width: 100%;
+}
+
+.layout__main {
+  max-width: 1024px;
+}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -14,7 +27,7 @@
   
   min-height: 100vh;
   min-height: 100lvh;
-  padding: 5%; 
+  padding: 5%;
 }
 
 .section > div {

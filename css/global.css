@@ -50,17 +50,26 @@ body {
 .button {
   background-color: var(--color-primary);
   color: #232323;
-  font-weight: 800;
+  font-weight: 400;
   width: fit-content;
   margin: 1% 2%;
   padding: 3% 4%;
   border-radius: 0.5rem;
 }
 
+button.button {
+  border: none;
+}
+
 .layout__header {
   position: sticky;
   display: flex;
+  justify-content: center;
   align-items: center;
+  background-color: var(--color-bg-alt);
+  min-width: 100vw;
+  min-width: 100lvw;
+  width: 100%;
   top: 0;
   left: 0;
   right: 0;

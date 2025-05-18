@@ -33,6 +33,7 @@
       COMING_SOON: true
     }
   </script>
+  <!-- <script i18n-sources="base/nav/home:hero,about,skills,works" src="/js/i18n.js" async></script> -->
   
   <noscript>
     <link rel="stylesheet" type="text/css" href="/css/global.css" />
@@ -106,38 +107,38 @@
         <ul class="nav__list">
           <li class="nav__item">
             <details class="nav__dropdown">
-              <summary class="sublist__title" data-i18n-global="nav.sections">Sections</summary>
+              <summary class="sublist__title" i18n-nav i18n="sections">Sections</summary>
               <ul class="nav__sublist">
                 <li class="nav__item">
-                  <a href="#hero" class="nav__link hoverable" for="hero" data-i18n-global="nav.hero" onclick="toggleNavVisibility();">Hero</a>
+                  <a href="#hero" class="nav__link hoverable" for="hero" i18n-nav i18n="hero" onclick="toggleNavVisibility();">Hero</a>
                 </li>
                 <li class="nav__item">
-                  <a href="#about" class="nav__link hoverable" for="about" data-i18n-global="nav.about">About</a>
+                  <a href="#about" class="nav__link hoverable" for="about" i18n-nav i18n="about">About</a>
                 </li>
                 <li class="nav__item">
-                  <a href="#skills" class="nav__link hoverable" for="skills" data-i18n-global="nav.skills">Skills</a>
+                  <a href="#skills" class="nav__link hoverable" for="skills" i18n-nav i18n="skills">Skills</a>
                 </li>
                 <li class="nav__item">
-                  <a href="#work" class="nav__link hoverable" for="work" data-i18n-global="nav.work">Work</a>
+                  <a href="#work" class="nav__link hoverable" for="work" i18n-nav i18n="work">Work</a>
                 </li>
               </ul>
             </details>
           </li>
           <li class="nav__item">
             <details class="nav__dropdown">
-              <summary class="sublist__title" data-i18n-global="nav.writings">Writings</summary>
+              <summary class="sublist__title" i18n-nav i18n="writings">Writings</summary>
               <ul class="nav__sublist">
                 <li class="nav__item">
-                  <a href="/blog" class="nav__link hoverable" for="home" data-i18n-global="nav.blog">Blog</a>
+                  <a href="/blog" class="nav__link hoverable" for="home" i18n-nav i18n="blog">Blog</a>
                 </li>
                 <li class="nav__item">
-                  <a href="/diary" class="nav__link hoverable" for="about" data-i18n-global="nav.diary">Diary</a>
+                  <a href="/diary" class="nav__link hoverable" for="about" i18n-nav i18n="diary">Diary</a>
                 </li>
                 <li class="nav__item">
-                  <a href="/journal" class="nav__link hoverable" for="skills" data-i18n-global="nav.journal">Journal</a>
+                  <a href="/journal" class="nav__link hoverable" for="skills" i18n-nav i18n="journal">Journal</a>
                 </li>
                 <li class="nav__item">
-                  <a href="/wiki.ng" class="nav__link hoverable" for="work" data-i18n-global="nav.wiking">Wiki.ng</a>
+                  <a href="/wiki.ng" class="nav__link hoverable" for="work" i18n-nav i18n="wiking">Wiki.ng</a>
                 </li>
               </ul>
             </details>
@@ -159,7 +160,7 @@
     <div class="language__selector__list"></div>
     
     <script src="/js/mobile_hamburger.js" async></script>
-    <!-- <script  data-i18n-sources="nav,hero:home/hero,about:home/about,skill:home/skill,work:home/work" src="/js/language_selector.js" async></script> -->
+    <!-- <script src="/js/language_selector.js" async></script> -->
     <script>Localizator.tryTranslateUnit('nav');</script>
   </header>
   
@@ -198,125 +199,127 @@
     </svg>
   </div>
   <script src="/js/upward_emitter.js" async onload="_upwardEmitter.init(5, 'fill', 2333, 300);"></script>
-  
-  <main class="layout__main">
-    <section class="section hero" id="hero">
-      <div>
-        <div class="hero__welcome">
-          <h1 class="hero__title"><span class="hoverable"><span data-i18n-hero="greeting">Yo</span><span style="color: var(--color-text-muted);">!</span></span><br /><span class="hoverable"><span data-i18n-hero="me">I'm</span> <span style="color: var(--color-accent);">Mimi</span>.</span><br /><span class="hoverable">A <span id="profession">Web Developer</span></span></h1>
-          <a class="button" href="mailto:realmimikri@outlook.com" target="_blank" data-i18n-hero="contact">Contact Me</a>
-        </div>
-        <div class="hero__social hoverable">
-          <a class="hero__social-icon" href="https://github.com/realmimikri" alt="Mimikri's GitHub"><i class="bx bxl-github"></i></a>
-          <a class="hero__social-icon" href="https://realmimikri.github.io" alt="Mimikri's Personal Website"><i class="bx bx-world"></i></a>
-        </div>
-      </div>
-      <script>Localizator.tryTranslateUnit('hero')</script>
-    </section>
-    <section class="section section--right about" id="about">
-      <div>
-        <h2 class="section__title hoverable" data-i18n-global="nav.about">About</h2>
+ 
+  <div class="main__container">
+    <main class="layout__main">
+      <section class="section hero" id="hero">
         <div>
-          <h3 class="section__subtitle hoverable" data-i18n-about="whoami">I am Mimi.</h3>
-          <p class="about__desc hoverable" data-i18n-about="description-1">I loves anime. My hobby are doing nothing but shits.</p>
-          <p class="about__desc hoverable" data-i18n-about="description-1">In the future, I have a dream of making my own operating system, game engine, and game.</p>
-        </div>
-      </div>
-      <script>Localizator.tryTranslateUnit('about')</script>
-    </section>
-    
-    <section class="section section--left skills" id="skills">
-      <div>
-        <h2 class="section__title hoverable" data-i18n-global="nav.skills">Skills</h2>
-        <div class="skills__list">
-          <details class="skills__skill hoverable">
-            <summary class="skills__skill-title skill__metadata--highlight">
-              <div class="skill__metadata">
-                <span class="skill__name"><i class="bx bxl-html5 skill__icon"></i>HTML5</span>
-                <span class="skill__percentage skill__percentage--highlight">95%</span>
-              </div>
-              <progress class="skill__progress" value="95" max="100"></progress>
-            </summary>
-            <p class="skill__desc" data-i18n-skills="html5.description">HTML5 is the latest major version of the HTML standard, designed to structure and present content on the web more efficiently. It introduced new semantic elements (like &lt;article&gt;, &lt;section&gt;, &lt;header&gt;), built-in media support with &lt;audio&gt; and &lt;video&gt;, and powerful APIs for things like offline storage, drag-and-drop, geolocation, and canvas-based graphics. It also dropped outdated tags (like &lt;font&gt;) and emphasized cleaner, more accessible, and mobile-friendly code. In short: it made the web smarter, faster, and more app-like.</p>
-          </details>
-          <details class="skills__skill hoverable">
-            <summary class="skills__skill-title">
-              <div class="skill__metadata">
-                <span class="skill__name"><i class="bx bxl-css3 skill__icon"></i>CSS3</span>
-                <span class="skill__percentage skill__percentage--highlight">76%</span>
-              </div>
-              <progress class="skill__progress" value="76" max="100"></progress>
-            </summary>
-            <p class="skill__desc" data-i18n-skills="css3.description">CSS3 is the latest evolution of Cascading Style Sheets, bringing powerful features that let developers create modern, responsive, and visually rich websites without relying heavily on JavaScript or images. It introduced modules like Flexbox and Grid for layout control, transitions and animations for smoother interactions, media queries for responsive design, and custom properties (variables) for cleaner, more maintainable code.</p>
-          </details>
-          <details class="skills__skill hoverable">
-            <summary class="skills__skill-title">
-              <div class="skill__metadata">
-                <span class="skill__name"><i class="bx bxl-javascript skill__icon"></i>JS</span>
-                <span class="skill__percentage skill__percentage--highlight">85%</span>
-              </div>
-              <progress class="skill__progress" value="85" max="100"></progress>
-            </summary>
-            <p class="skill__desc" data-i18n-skills="javascript.description">JavaScript is the dynamic scripting language of the web, designed to bring interactivity, logic, and behavior to static HTML/CSS pages. It's used for everything from handling user input and updating content in real-time to building full-scale web apps, with powerful APIs, event-driven architecture, and widespread support across all modern browsers. With the rise of frameworks like React and Node.js, JavaScript has become the backbone of both frontend and backend development.</p>
-          </details>
-          <details class="skills__skill hoverable">
-            <summary class="skills__skill-title">
-              <div class="skill__metadata">
-                <span class="skill__name"><i class="bx bx-code skill__icon"></i>C</span>
-                <span class="skill__percentage skill__percentage--highlight">68%</span>
-              </div>
-              <progress class="skill__progress" value="68" max="100"></progress>
-            </summary>
-            <p class="skill__desc" data-i18n-skills="clang.description">C is a low-level, high-performance programming language that gives you direct control over memory and system resources. Originally developed in the 1970s, it became the backbone of modern operating systems, embedded systems, and tools like compilers. With its minimal runtime and deterministic behavior, C is often chosen when speed, efficiency, and hardware-level access matter. It’s powerful but unforgiving — you manage your own memory, deal with pointers, and take full responsibility for safety.</p>
-          </details>
-          <details class="skills__skill hoverable">
-            <summary class="skills__skill-title">
-              <div class="skill__metadata">
-                <span class="skill__name"><i class="bx bx-code-curly skill__icon"></i>C++</span>
-                <span class="skill__percentage">12%</span>
-              </div>
-              <progress class="skill__progress" value="12" max="100"></progress>
-            </summary>
-            <p class="skill__desc" data-i18n-skills="cpp.description">C++ builds on C by adding object-oriented programming, templates, exception handling, and more — effectively blending low-level control with high-level abstractions. It lets you write both system-level code and complex software architectures in the same language. Used in everything from game engines and real-time simulations to finance and high-performance apps, C++ is known for its performance, complexity, and massive feature set. It’s like driving a race car: powerful, fast, but it’ll bite you if you lose focus.</p>
-          </details>
-          <details class="skills__skill hoverable">
-            <summary class="skills__skill-title">
-              <div class="skill__metadata">
-                <span class="skill__name"><i class="bx bx-code skill__icon"></i>Java</span>
-                <span class="skill__percentage">78%</span>
-              </div>
-              <progress class="skill__progress" value="78" max="100"></progress>
-            </summary>
-            <p class="skill__desc" data-i18n-skills="java.description">Java is a high-level, object-oriented language designed to be portable, secure, and easy to run across platforms — “write once, run anywhere.” It compiles to bytecode that runs on the Java Virtual Machine (JVM), making it platform-independent. Java has strict typing, garbage collection, and a massive standard library, which made it a go-to for enterprise software, Android development, and big systems. It's verbose but stable, with a strong ecosystem and long-term maintainability at its core.</p>
-          </details>
-          <details class="skills__skill hoverable">
-            <summary class="skills__skill-title">
-              <div class="skill__metadata">
-                <span class="skill__name"><i class="bx bx-code-alt skill__icon"></i>Python</span>
-                <span class="skill__percentage">5%</span>
-              </div>
-              <progress class="skill__progress" value="5" max="100"></progress>
-            </summary>
-            <p class="skill__desc" data-i18n-skills="python.description">Python is a high-level, interpreted language known for its simplicity, readability, and massive versatility. With clean, human-like syntax, it’s beginner-friendly but powerful enough for professionals building everything from web apps and automation scripts to AI models and scientific computing. Python thrives on an enormous ecosystem of libraries and frameworks (like Django, NumPy, and TensorFlow), and its “batteries included” philosophy makes rapid development feel effortless. It trades raw speed for ease of use — but in the right hands, it’s a damn sharp tool.</p>
-          </details>
-        </div>
-      </div>
-      <script>Localizator.tryTranslateUnit('skills')</script>
-    </section>
-    <section class="section section--right work" id="work">
-      <div>
-        <h2 class="section__title hoverable" data-i18n-global="nav.work">Works</h2>
-        <div class="card-list">
-          <div class="card hoverable">
-            <div class="card__image card__image--noimage" role="img" aria-label="Portfolio Project Preview"></div>
-            <h3 data-i18n-work="portfolio">Portfolio</h3>
-            <p data-i18n-work="portfolio.desc">This is my portfolio; this website.</p>
+          <div class="hero__welcome">
+            <h1 class="hero__title"><span class="hoverable"><span i18n-hero i18n="greeting">Yo</span><span style="color: var(--color-text-muted);">!</span></span><br /><span class="hoverable"><span i18n-hero i18n="me">I'm</span> <span style="color: var(--color-accent);">Mimi</span>.</span><br /><span class="hoverable">A <span id="profession">Web Developer</span></span></h1>
+            <a class="button" href="mailto:realmimikri@outlook.com" target="_blank" i18n-hero i18n="contact">Contact Me</a>
+          </div>
+          <div class="hero__social hoverable">
+            <a class="hero__social-icon" href="https://github.com/realmimikri" alt="Mimikri's GitHub"><i class="bx bxl-github"></i></a>
+            <a class="hero__social-icon" href="https://realmimikri.github.io" alt="Mimikri's Personal Website"><i class="bx bx-world"></i></a>
           </div>
         </div>
-      </div>
-      <script>Localizator.tryTranslateUnit('work')</script>
-    </section>
-  </main>
+        <script>Localizator.tryTranslateUnit('hero')</script>
+      </section>
+      <section class="section section--right about" id="about">
+        <div>
+          <h2 class="section__title hoverable" i18n-nav i18n="about">About</h2>
+          <div>
+            <h3 class="section__subtitle hoverable" i18n-about i18n="whoami">I am Mimi.</h3>
+            <p class="about__desc hoverable" i18n-about i18n="description-1">I loves anime. My hobby are doing nothing but shits.</p>
+            <p class="about__desc hoverable" i18n-about i18n="description-1">In the future, I have a dream of making my own operating system, game engine, and game.</p>
+          </div>
+        </div>
+        <script>Localizator.tryTranslateUnit('about')</script>
+      </section>
+      
+      <section class="section section--left skills" id="skills">
+        <div>
+          <h2 class="section__title hoverable" i18n-nav i18n="skills">Skills</h2>
+          <div class="skills__list">
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title skill__metadata--highlight">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bxl-html5 skill__icon"></i>HTML5</span>
+                  <span class="skill__percentage skill__percentage--highlight">95%</span>
+                </div>
+                <progress class="skill__progress" value="95" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="html5.description">HTML5 is the latest major version of the HTML standard, designed to structure and present content on the web more efficiently. It introduced new semantic elements (like &lt;article&gt;, &lt;section&gt;, &lt;header&gt;), built-in media support with &lt;audio&gt; and &lt;video&gt;, and powerful APIs for things like offline storage, drag-and-drop, geolocation, and canvas-based graphics. It also dropped outdated tags (like &lt;font&gt;) and emphasized cleaner, more accessible, and mobile-friendly code. In short: it made the web smarter, faster, and more app-like.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bxl-css3 skill__icon"></i>CSS3</span>
+                  <span class="skill__percentage skill__percentage--highlight">76%</span>
+                </div>
+                <progress class="skill__progress" value="76" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="css3.description">CSS3 is the latest evolution of Cascading Style Sheets, bringing powerful features that let developers create modern, responsive, and visually rich websites without relying heavily on JavaScript or images. It introduced modules like Flexbox and Grid for layout control, transitions and animations for smoother interactions, media queries for responsive design, and custom properties (variables) for cleaner, more maintainable code.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bxl-javascript skill__icon"></i>JS</span>
+                  <span class="skill__percentage skill__percentage--highlight">85%</span>
+                </div>
+                <progress class="skill__progress" value="85" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="javascript.description">JavaScript is the dynamic scripting language of the web, designed to bring interactivity, logic, and behavior to static HTML/CSS pages. It's used for everything from handling user input and updating content in real-time to building full-scale web apps, with powerful APIs, event-driven architecture, and widespread support across all modern browsers. With the rise of frameworks like React and Node.js, JavaScript has become the backbone of both frontend and backend development.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bx-code skill__icon"></i>C</span>
+                  <span class="skill__percentage skill__percentage--highlight">68%</span>
+                </div>
+                <progress class="skill__progress" value="68" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="clang.description">C is a low-level, high-performance programming language that gives you direct control over memory and system resources. Originally developed in the 1970s, it became the backbone of modern operating systems, embedded systems, and tools like compilers. With its minimal runtime and deterministic behavior, C is often chosen when speed, efficiency, and hardware-level access matter. It’s powerful but unforgiving — you manage your own memory, deal with pointers, and take full responsibility for safety.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bx-code-curly skill__icon"></i>C++</span>
+                  <span class="skill__percentage">12%</span>
+                </div>
+                <progress class="skill__progress" value="12" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="cpp.description">C++ builds on C by adding object-oriented programming, templates, exception handling, and more — effectively blending low-level control with high-level abstractions. It lets you write both system-level code and complex software architectures in the same language. Used in everything from game engines and real-time simulations to finance and high-performance apps, C++ is known for its performance, complexity, and massive feature set. It’s like driving a race car: powerful, fast, but it’ll bite you if you lose focus.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bx-code skill__icon"></i>Java</span>
+                  <span class="skill__percentage">78%</span>
+                </div>
+                <progress class="skill__progress" value="78" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="java.description">Java is a high-level, object-oriented language designed to be portable, secure, and easy to run across platforms — “write once, run anywhere.” It compiles to bytecode that runs on the Java Virtual Machine (JVM), making it platform-independent. Java has strict typing, garbage collection, and a massive standard library, which made it a go-to for enterprise software, Android development, and big systems. It's verbose but stable, with a strong ecosystem and long-term maintainability at its core.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bx-code-alt skill__icon"></i>Python</span>
+                  <span class="skill__percentage">5%</span>
+                </div>
+                <progress class="skill__progress" value="5" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="python.description">Python is a high-level, interpreted language known for its simplicity, readability, and massive versatility. With clean, human-like syntax, it’s beginner-friendly but powerful enough for professionals building everything from web apps and automation scripts to AI models and scientific computing. Python thrives on an enormous ecosystem of libraries and frameworks (like Django, NumPy, and TensorFlow), and its “batteries included” philosophy makes rapid development feel effortless. It trades raw speed for ease of use — but in the right hands, it’s a damn sharp tool.</p>
+            </details>
+          </div>
+        </div>
+        <script>Localizator.tryTranslateUnit('skills')</script>
+      </section>
+      <section class="section section--right work" id="work">
+        <div>
+          <h2 class="section__title hoverable" i18n-nav i18n="work">Works</h2>
+          <div class="card-list">
+            <div class="card hoverable">
+              <div class="card__image card__image--noimage" role="img" aria-label="Portfolio Project Preview"></div>
+              <h3 i18n-works i18n="portfolio">Portfolio</h3>
+              <p i18n-works i18n="portfolio.desc">This is my portfolio; this website.</p>
+            </div>
+          </div>
+        </div>
+        <script>Localizator.tryTranslateUnit('work')</script>
+      </section>
+    </main>
+  </div>
   <footer class="layout__footer">
     <h2 class="footer__title">Mimikri</h2>
     <div class="footer__content">
@@ -330,10 +333,10 @@
       <div class="footer__links-container">
         <div class="footer__links">
           <h3 class="footer__subtitle">Writings</h3>
-          <a href="/blog" data-i18n-global="nav.blog">Blog</a>
-          <a href="/journal" data-i18n-global="nav.journal">Journal</a>
-          <a href="/diary" data-i18n-global="nav.diary">Diary</a>
-          <a href="/wiki.ng" data-i18n-global="nav.wiking">wiki.ng</a>
+          <a href="/blog" i18n-nav i18n="blog">Blog</a>
+          <a href="/journal" i18n-nav i18n="journal">Journal</a>
+          <a href="/diary" i18n-nav i18n="diary">Diary</a>
+          <a href="/wiki.ng" i18n-nav i18n="wiking">wiki.ng</a>
         </div>
         <div class="footer__links">
           <h3 class="footer__subtitle">Projects</h3>
