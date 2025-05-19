@@ -132,6 +132,4 @@ if(document.documentElement) {
   })
 }
 
-window.addEventListener('resize', () => {
-  window.scrollTo(0, smoothScroll.sections[smoothScroll.activeSectionIndex].offsetTop);
-});
+window.addEventListener('resize', () => window.scrollTo(0, 0));

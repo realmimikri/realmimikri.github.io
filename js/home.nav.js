@@ -1,7 +1,7 @@
 function initNavGSAPAnimation() {
-  gsap.set('.nav', { opacity: 0, y: '-100vh' });
+  gsap.set('.layout__header,.nav', { opacity: 0, y: '-100vh' });
   setTimeout(() => {
-    gsap.to('.nav',
+    gsap.to('.layout__header,.nav',
     {
       opacity: 1,
       y: 0,
