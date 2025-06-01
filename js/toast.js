@@ -4,6 +4,7 @@ function showToast(message, { type = 'success', duration = 3000, closable = fals
   
   toast.className = `toast toast--${type}`;
   toast.textContent = message;
+  toast.setAttribute('aria-role', 'alert');
 
   container.appendChild(toast);
 
@@ -12,16 +13,16 @@ function showToast(message, { type = 'success', duration = 3000, closable = fals
     
     closer.className = 'toast__closer';
     closer.innerHTML = '<span></span><span></span>';
+    closer.setAttribute('aria-label', 'Close Popup');
     
     closer.addEventListener('click', () => {
       toast.classList.add('toast--hidden');
       setTimeout(() => {
         container.removeChild(toast);
-        container.removeChild(closer);
       }, 300);
     });
     
-    container.appendChild(closer);
+    toast.appendChild(closer);
   } else {
     setTimeout(() => {
       toast.classList.add('toast--hidden');
