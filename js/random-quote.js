@@ -7,8 +7,8 @@
   const spinner = $.id('quote-spinner');
   const list    = $.id('quote-list');
   const delay = new Promise((resolve) => setTimeout(resolve, 300));
-  const cache = [];
   
+  let cache = [];
   let cacheIndex = 0;
   let generateCount = 0;
   let throttle = false;
