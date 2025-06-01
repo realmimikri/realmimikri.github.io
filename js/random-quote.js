@@ -33,7 +33,7 @@
       
       data.forEach((quote) => {
         const li = document.createElement('li');
-        li.textContent = `${quote.content} — ${quote.author}`;
+        li.textContent = `${quote.q} — ${quote.a}`;
         fragment.append(li);
       });
       
@@ -60,7 +60,7 @@
   }
   
   async function fetchQuote() {
-    const res  = await fetch('/api/random-quotes', {
+    const res  = await fetch('/api/random-quote', {
       method: 'GET',
       mode: 'cors',
       cache: 'no-cache',
