@@ -31,11 +31,14 @@
     .then(([_, data]) => {
       const fragment = document.createDocumentFragment();
       
-      data.forEach((quote) => {
+      for(let i = 0; i < 5; i++) {
+        const quote = data[i];
         const li = document.createElement('li');
         li.textContent = `${quote.q} — ${quote.a}`;
         fragment.append(li);
-      });
+      };
+      
+      cacheIndex += 5;
       
       button.disabled = false;
       spinner.classList.add('hidden');
