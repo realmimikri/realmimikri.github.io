@@ -36,6 +36,7 @@
         if(!quote) {
           limit++;
           if(limit >= 50) break;
+          else continue;
         }
         
         const li = document.createElement('li');
