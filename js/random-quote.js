@@ -52,8 +52,8 @@
       try {
         return await fetchQuote();
       } catch(err) {
-        showToast('Failed to fetch.', { type: 'error', closable: true });
-        throw Error('Failed to fetch.');
+        showToast(err.message || err.toString(), { type: 'error', closable: true });
+        throw err;
       }
     }
     else return retrieveCachedQuote();
