@@ -60,7 +60,7 @@
   });
   
   async function getQuote() {
-    if(generateCount === 0 || cacheIndex === 50) return await fetchQuote();
+    if(generateCount === 0 || cacheIndex >= 50) return await fetchQuote();
     else return retrieveCachedQuote();
   }
   
