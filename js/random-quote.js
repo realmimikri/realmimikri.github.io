@@ -28,7 +28,7 @@
     spinner.classList.remove('hidden');
     
     Promise.all([delay, getQuote()])
-    .then((data) => {
+    .then(([_, data]) => {
       const fragment = document.createDocumentFragment();
       
       data.forEach((quote) => {
