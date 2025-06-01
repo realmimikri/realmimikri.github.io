@@ -1,0 +1,164 @@
+@font-face {
+  font-family: 'Cinzel';
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 200;
+  src: url(/fonts/CinzelRegular.woff2) format('woff2'),
+       url(/fonts/CinzelRegular.ttf) format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SourceSansPro';
+  font-style: normal;
+  font-stretch: normal;
+  font-weight: 200;
+  src: url(/fonts/SourceSansPro.woff2) format('woff2');
+  font-display: swap;
+}
+
+body, html {
+  font-family: 'SourceSansPro', sans-serif;
+  overflow: hidden;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  height: 100%;
+}
+
+.panel__container {
+  position: relative;
+}
+
+.panel {
+  will-change: opacity;
+  position: absolute;
+  visibility: hidden;
+  user-select: none;
+  width: 100vw;
+  height: 100vh;
+  height: 100lvh;
+  opacity: 0;
+}
+
+.panel__start {
+  visibility: visible;
+  opacity: 1;
+}
+
+.blur-wrap {
+  position: absolute;
+  box-shadow: inset 10px -10px min(125vw, 125vh) min(8vw, 8vh) black;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  animation: pulseShadow 5s ease-in-out infinite;
+}
+
+.start__background {
+  will-change: opacity, object-position, -o-object-position;
+  opacity: 0.5;
+  position: absolute;
+  display: block;
+  object-fit: cover;
+  object-position: left top;
+  -o-object-fit: cover;
+  -o-object-position: left top;
+  width: 100%;
+  height: 100%;
+  animation: panBackground 200s linear infinite;
+}
+
+.start__tooltip {
+  will-change: opacity;
+  position: absolute;
+  text-align: center;
+  color: var(--color-text-secondary);
+  width: max-content;
+  padding: 1rem;
+  left: 50%;
+  bottom: 5%;
+  transform: translateX(-50%);
+  animation: blink 1.5s infinite;
+}
+
+.start__menu {
+  position: relative;
+  height: 100%;
+}
+
+.start__button {
+  position: absolute;
+  background-color: transparent;
+  color: var(--color-text);
+  border: var(--color-text) 1px solid;
+  border-radius: 0.5rem;
+  max-width: calc(60vw - 4rem);
+  padding: 0.5rem 2rem;
+}
+
+.contact {
+  left: 50%;
+  bottom: 30%;
+  transform: translateX(-125%);
+}
+
+.project {
+  left: 50%;
+  bottom: 30%;
+  transform: translateX(25%);
+}
+
+.play {
+  max-width: calc((30vw - 2rem) * 2);
+  width: 100%;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@keyframes blink {
+  20%, 80% { opacity: 1; }
+  40%, 60% { opacity: 0.5; }
+  50% { opacity: 0; }
+}
+
+@keyframes pulseShadow {
+  0%, 100% {
+    box-shadow: inset 10px -10px min(125vw, 125vh) min(8vw, 8vh) black;
+  }
+  
+  50% {
+    box-shadow: inset 10px -10px min(32vw, 32vh) min(16vw, 16vh) black;
+  }
+}
+
+@keyframes panBackground {
+  0%, 100% {
+    object-position: left top;
+    -o-object-position: left top;
+  }
+  
+  0%, 20%, 40%, 60%, 80%, 100% {
+    opacity: 0;
+  }
+  
+  10%, 30%, 50%, 70%, 90% {
+    opacity: 0.5;
+  }
+  
+  50% {
+    object-position: right bottom;
+    -o-object-position: right bottom;
+  }
+}
+
+@media (max-width: 768px) {
+  .start__background {
+    object-position: 40% center;
+    -o-object-position: 40% center;
+  }
+}
+
+@media (orientation: landscape) {
+  
+}

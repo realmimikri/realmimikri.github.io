@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  
+  <title>Mimikri — Your Daily Random Quote.</title>
+  <meta name="description" content="Get a random quote." />
+  <meta name="author" content="Mimikri" />
+  
+  <!-- ALL OF THIS ARE PRELOAD -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preload" as="style" type="text/css" href="/css/mimi.random-quote.css" onload="this.onload = null; this.rel = 'stylesheet';" />
+  <link rel="preload" as="style" type="text/css" href="/css/mimi.css" onload="this.onload = null; this.rel = 'stylesheet';" />
+  <!--
+    EXPERIMENTING
+    <link rel="preload" as="style" type="text/css" href="/css/mimi-768max.css" onload="this.onload = null; this.rel = 'stylesheet'; this.media = '(max-width: 768px)';" />
+    <link rel="preload" as="style" type="text/css" href="/css/mimi-768min.css" onload="this.onload = null; this.rel = 'stylesheet'; this.media = '(min-width: 768px)';" />
+  -->
+  <link rel="stylesheet" type="text/css" href="/css/mimi.base.css" />
+  <link rel="stylesheet" type="text/css" href="/css/mimi.boxicons.css" />
+  
+  <meta property="og:title" content="Random Quote Generator" />
+  <meta property="og:description" content="Get your daily dose of quote here!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://realmimikri.github.io/random-quote" />
+  <meta property="og:site_name" content="Mimikri" />
+  <meta property="og:locale" content="en-US" />
+  <!--
+    TODO: Fill icons when I already have the icons
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  -->
+  <meta name="google-site-verification" content="ybFYqjdr5BOwZmc2RrYvwUbkWDeaU0R_D6H-RtgI7ck" />
+</head>
+<body>
+  <script src="/js/toast.js" defer></script>
+  <script src="/js/random-quote.js" defer></script>
+  
+  <header class="page__header">
+    <h1 class="page__brand">Mimikri</h1>
+    <div class="page__hamburger" title="Toggle Navigation" aria-label="Toggle Navigation" aria-expanded="false" aria-controls="page-navigation"><span></span><span></span></div>
+    <div class="page-hamburger__menu">
+      <nav class="page__navigation" id="page-navigation"></nav>
+      <div class="page__controls">
+        <button class="button--icon"><i class="bx bx-adjust" title="Theme Toggle" aria-label="Theme Toggle"></i></button>
+      </div>
+    </div>
+  </header>
+  
+  <main class="page__content">
+    <h1 class="page__title">Random Quote Generator</h1>
+    <p class="quote__desc">Get a random quote anytime, forever.</p>
+    
+    <section class="page__section">
+      <div class="quote__controls">
+        <h2 class="section__title">Quotes</h2>
+        <button class="button button--primary" id="quote-generate">Generate</button>
+      </div>
+      <div class="quote__center">
+        <div class="spinner quote__spinner hidden" id="quote-spinner"></div>
+        <ul class="list list--raw list--quote" id="quote-list"></ul>
+      </div>
+    </section>
+  </main>
+  
+  <div class="toast-container" id="toast-container"></div>
+</body>
+</html>

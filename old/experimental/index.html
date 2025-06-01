@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+  <title>Mimikri's Portfolio</title>
+  
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/CinzelRegular.woff2" />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/SourceSansPro.woff2" />
+  <link rel="preload" as="style" type="text/css" href="/css/home-mmo.css" onload="this.rel = 'stylesheet'; this.onload = null;" />
+  <link rel="preload" as="style" type="text/css" href="/css/home-vn.css" onload="this.rel = 'stylesheet'; this.onload = null;" />
+  
+  <meta http-equiv="X-UA-Comptible" content="IE=edge" />
+  <meta name="description" content="Mimikri's Portfolio Page" />
+  <meta name="author" content="mimi" />
+  
+  <style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  :root {
+    --color-text: #EFEFEF;
+    --color-text-secondary: #736373;
+    --color-text-novel: #A393A3;
+    --color-bg: #101010;
+  }
+  
+  :root.dark {
+    --color-text: #101010;
+    --color-text-secondary: #8F7F8F;
+    --color-text-novel: #5F4F5F;
+    --color-bg: #EFEFEF;
+  }
+  </style>
+  
+  <noscript>
+    <link rel="stylesheet" type="text/css" href="/css/home-vn.css" />
+    <link rel="stylesheet" type="text/css" href="/css/home-noscript.css" />
+  </noscript>
+  
+  <script src="/js/home-vn.js" defer></script>
+</head>
+<body>
+  <main class="panel__container">
+    <section class="panel panel__start">
+      <img class="start__background" src="/images/home-bg.jpg" alt="" />
+      <span class="start__tooltip">Tap anywhere to start.</span>
+      <div class="start__menu">
+        <button class="start__button contact">Contact</button>
+        <button class="start__button project">Project</button>
+        <button class="start__button play">About Me</button>
+      </div>
+      <div class="blur-wrap"></div>
+    </section>
+    
+    <section class="panel panel__main">
+      <span id="content" class="js-only-content">In the dark rainy day, you heard a familiar sound...</span>
+      
+      <noscript class="noscript-fallback-content">
+        <span class="chapter-title">Intro</span>
+        <p>In the dark rainy day, you heard a familiar sound...</p>
+        <p>You followed the sound...blinked once, and everything changes!</p>
+        <p>You're not in your world anymore, where are you now?</p>
+        <br />
+        <span class="chapter-title">Chapter 1: Echoes of Memory</span>
+        <p>You find yourself in a place with no walls, no ceiling—just a vast black space lit by scattered fragments of light, floating like broken thoughts.</p>
+        <p>One fragment glows brighter than the rest. As you approach it, you hear a soft rhythm—keyboard clicks, a distant melody… Monody?</p>
+        <p>Inside the fragment, you see lines of code... not just syntax, but stories. Each function tells of struggles, each loop a reflection of endless thought. It's not just programming. It's you, expressed in logic.</p>
+        <p>Another fragment shows an empty room. A single chair. You sit, and memories flood in—of quiet nights filled with dreams, of questions that never got answers, of hopes too heavy to speak aloud.</p>
+        <p>Your hands tremble slightly—not from fear, but from weight. This place... it knows you.</p>
+        <br />
+        <span class="chapter-title">Chapter 2: Into the Mind</span>
+        <p>As you step deeper into the labyrinth of memories, fragments of a past life flicker around you — fleeting images of joy, shadows of fear, whispers of forgotten dreams. The air grows heavier, thick with unspoken truths.</p>
+        <p>A faint voice echoes, barely audible, urging you to stop, to turn back. But curiosity pulls you forward, beyond the veil of silence.</p>
+        <p>Suddenly, a shadow stirs at the edge of your vision — elusive, yet undeniable. It feels like something meant to stay hidden is now watching you... waiting.</p>
+        <p>The journey is no longer just discovery; it has become a test of courage.</p>
+      </noscript>
+      
+      <!--
+      <span class="text text-section" id="mono-1">From epic worlds to intimate moments. Welcome to my space.</span>
+      <div class="text-group text-section" id="mono-2">
+        <span class="text" id="mono-3">Some say that coding is for machines.</span>
+        <span class="text" id="mono-4"> I say</span>
+        <span class="text" id="mono-5">...</span>
+        <span class="text" id="mono-6">, it’s for those who want to outdream them.</span>
+      </div>
+      <div class="text-group text-section" id="mono-7">
+        <span class="text" id="mono-8">I don’t code to impress.</span>
+        <span class="text" id="mono-9">I code</span>
+        <span class="text" id="mono-10"> to express.</span>
+      </div>
+      <div class="text text-section" id="mono-11">
+        <span class="text" id="mono-12">Each project I build is a reflection</span>
+        <span class="text" id="mono-13"> — of thoughts I couldn’t speak out loud.</span>
+      </div>
+      <div class="text text-section" id="mono-14">
+        <span class="text" id="mono-15">I’ve danced with JavaScript,</span>
+        <span class="text" id="mono-16"> argued with CSS,</span>
+        <span class="text" id="mono-17"> and had midnight talks with C.</span>
+      </div>
+      <!--
+      <div class="text text-section" id="mono-15">
+        <span class="text">Every line I write is either an idea taking form — or a bug in disguise.</span>
+      </div>
+      <div class="text text-section" id="mono-1">
+        <span class="text">My works don’t just function — they breathe. They carry the echoes of late nights and little sparks.</span>
+      </div>
+      <div class="text text-section" id="mono-1">
+        <span class="text">Here, let me show you what I’ve made.</span>
+      </div>
+      <div class="text text-section" id="mono-1">
+        <span class="text">I don’t have all the answers. But I chase questions that matter — to me.</span>
+      </div>
+      <div class="text text-section" id="mono-1">
+        <span class="text">Sometimes I wonder if I’m building a portfolio, or just leaving a trail of who I was.</span>
+      </div>
+      <div class="text text-section" id="mono-1">
+        <span class="text">If you’ve made it this far, thank you.</span>
+      </div>
+      <div class="text text-section" id="mono-1">
+        <span class="text">This world is mine. But maybe, now, it’s also a bit yours.</span>
+      </div>
+      -->
+    </section>
+  </main>
+  
+  <noscript>
+    <div class="alert-box">This website uses JavaScript. Enable JavaScript for full experience.</div>
+  </noscript>
+  
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/TextPlugin.min.js"></script>
+  <script>
+    document.querySelector('.panel__start').addEventListener('click', () => {
+      const pStart = document.querySelector('.panel__start');
+      const pMain = document.querySelector('.panel__main');
+      
+      // Fade out start screen
+      gsap.to('.panel__start', {
+        duration: 1,
+        opacity: 0,
+        onComplete: () => {
+          pStart.style.visibility = 'hidden';
+          pMain.style.visibility = 'visible';
+          
+          // Animate main content in
+          gsap.to(pMain, {
+            duration: 1,
+            opacity: 1,
+            delay: 1,
+            ease: 'power3.out',
+            onComplete: () => tl.play()
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

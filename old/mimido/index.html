@@ -1,0 +1,223 @@
+  <!doctype html>
+  <html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Mimido is a very powerful TODO List application" />
+    <meta name="author" content="mimi" />
+    
+    <title>Mimido — Tasks on Your Terms.</title>
+    <!--
+        TODO: Fill icons when I already have the icons
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+      -->
+    
+    <!-- ALL OF THIS ARE PRELOAD -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preload" as="style" type="text/css" href="/css/global.css" onload="this.onload = null; this.rel = 'stylesheet';" />
+    <link rel="preload" as="style" type="text/css" href="/css/mimido.css" onload="this.onload = null; this.rel = 'stylesheet';" />
+    <link rel="preload" as="style" type="text/css" href="/css/global_max768.css" onload="this.onload = null; this.rel = 'stylesheet'; this.media = '(max-width: 768px)';" />
+    <link rel="preload" as="style" type="text/css" href="/css/global_min768.css" onload="this.onload = null; this.rel = 'stylesheet'; this.media = '(min-width: 768px)';" />
+    <link rel="preload" href="/icons/menu.svg" as="image" type="image/svg+xml">
+    <link rel="preload" href="/icons/daylight.svg" as="image" type="image/svg+xml">
+    
+    <script>
+      window.Localizator = {
+        tryTranslateUnit: (unit) => {
+          Localizator.queue.push(unit);
+        },
+        queue: [],
+        COMING_SOON: true
+      }
+    </script>
+    <!-- <script i18n-sources="base/nav/mimido" src="/js/i18n.js" async></script> -->
+    
+    <noscript>
+      <link rel="stylesheet" type="text/css" href="/css/global.css" />
+      <link rel="stylesheet" type="text/css" href="/css/mimido.css" />
+      <link rel="stylesheet" type="text/css" href="/css/global_max768.css" media="(max-width: 768px)" />
+      <link rel="stylesheet" type="text/css" href="/css/global_min768.css" media="(min-width: 768px)" />
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" />
+    </noscript>
+    
+    <meta property="og:title" content="Mimido" />
+    <meta property="og:description" content="Mimido lets you set flexible task goal—minimums, maximums, and cycles—wirhout the pressure or daily checklists." />
+    <meta property="og:url" content="https://realmimikri.github.io/mimido" />
+    
+    <meta name="google-site-verification" content="ybFYqjdr5BOwZmc2RrYvwUbkWDeaU0R_D6H-RtgI7ck" />
+    
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollToPlugin.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js" defer></script>
+  </head>
+  <body>
+    <script>
+      const isOnDarkMode = () => localStorage.getItem('dark-mode-enabled') === 'true';
+      const toggleDarkMode = (toggle) => {
+        let isDarkModeEnabled = isOnDarkMode();
+        if(toggle) {
+          isDarkModeEnabled = !isDarkModeEnabled;
+          localStorage.setItem('dark-mode-enabled', isDarkModeEnabled);
+        } else if(typeof isDarkModeEnabled !== 'boolean') {
+          return;
+        }
+        
+        document
+          .documentElement
+          .classList
+          .toggle('dark', isDarkModeEnabled);
+      };
+      
+      toggleDarkMode(false);
+    </script>
+    
+    <header class="layout__header">
+      <nav class="nav">
+        <div class="nav__title">
+          <a href="/" class="nav__author">Mimikri</a>
+          <a href="#" class="nav__page-title">Mimido</a>
+        </div>
+        
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <details class="nav__dropdown">
+                <summary class="sublist__title" i18n-nav i18n="writings">Writings</summary>
+                <ul class="nav__sublist">
+                  <li class="nav__item">
+                    <a href="/blog" class="nav__link hoverable" for="home" i18n-nav i18n="blog">Blog</a>
+                  </li>
+                  <li class="nav__item">
+                    <a href="/diary" class="nav__link hoverable" for="about" i18n-nav i18n="diary">Diary</a>
+                  </li>
+                  <li class="nav__item">
+                    <a href="/journal" class="nav__link hoverable" for="skills" i18n-nav i18n="journal">Journal</a>
+                  </li>
+                  <li class="nav__item">
+                    <a href="/wiki.ng" class="nav__link hoverable" for="work" i18n-nav i18n="wiking">Wiki.ng</a>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+        
+        <div class="nav__toggles">
+          <div class="nav__toggle" id="nav-toggle">
+            <img src="/icons/menu.svg" loading="lazy" />
+          </div>
+          <div class="nav__toggle" id="theme-toggle" onclick="toggleDarkMode(true);">
+            <img src="/icons/daylight.svg" loading="lazy" />
+          </div>
+          <span role="button" class="language-selector__label"><img width="40" src="https://flagcdn.com/us.svg" loading="lazy" / /></span>
+        </div>
+      </nav>
+      
+      <div class="language__selector__list"></div>
+      
+      <script src="/js/mobile_hamburger.js" async></script>
+      <!-- <script src="/js/language_selector.js" async></script> -->
+      <script>Localizator.tryTranslateUnit('nav');</script>
+    </header>
+    
+    <main class="layout__main">
+      <aside class="mimido__control">
+        <div class="control__groups">
+          <span i18n-mimido i18n="groups">Groups</span>
+          <details class="control__add-group">
+            <summary class="group__add" aria-label="Add Task Group"
+              i18n-advanced i18n-scope="mimido/mimido"
+              i18n="add-group/add-task-group" i18n-property="textContent/ariaLabel">Add Group</summary>
+            <input id="group-name" class="group__name" type="text" placeholder="Group Name" aria-label="Set Group Name"
+              i18n-advanced i18n-scope="mimido/mimido"
+              i18n="group-name/set-group-name" i18n-property="placeholder/ariaLabel" />
+            <button class="button add-group__submit" type="submit" i18n-mimido i18n="add-group">Add Group</button>
+          </details>
+          <ul class="groups__list"></ul>
+        </div>
+      </aside>
+      <section>
+        <h1 class="main__title" i18n-mimido i18n="your-tasks">Your Tasks</h1>
+        <button id="add-task" class="task__add button" aria-label="Add Task" i18n-mimido i18n="add-task" i18n-property="textContent,ariaLabel">Add Task</button>
+        <div class="modal">
+          <div class="modal__background"></div>
+          <div class="modal__content task__config">
+            <div class="modal__header">
+              <h2 class="modal__title" aria-label="Add Task" i18n-mimido i18n="add-task" i18n-property="textContent,ariaLabel">Add Task</h2>
+              <span class="modal__close" aria-label="Close Modal" i18n-mimido i18n="close-modal" i18n-property="ariaLabel">X <!-- temporary X --></span>
+            </div>
+            <label for="task-group" class="config__option">
+              <span class="option__name" i18n-mimido i18n="group">Group</span>
+              <select id="task-group" class="option--group task__group"></select>
+            </label>
+            <label for="task-name" class="config__option">
+              <span class="option__name" i18n-mimido i18n="name">Name</span>
+              <input id="task-name" class="option--name task__name" type="text" placeholder="Task Name" i18n-mimido i18n="task-name" i18n-property="placeholder" />
+            </label>
+            <details class"config--advanced">
+              <summary class="config__title" i18n-mimido i18n="advanced"><h3>Advanced</h3></summary>
+              <label for="cycle" class="config__option">
+                <span class="option__name" i18n-mimido i18n="cycle">Cycle</span>  
+                <span class="option__tooltip" i18n-mimido i18n="cycle-tooltip">Defines repetition pattern and count. Use formats like 'every day', '3 per week', or '2–4 per month'</span>
+                <input id="cycle" class="config--cycle" type="text" />
+              </label>
+              <label for="lifespan" class="config__option">
+                <span class="option__name" i18n-mimido i18n="lifespan">Lifespan</span>
+                <span class="option__tooltip" i18n-mimido i18n="lifespan-tooltip">How long this task should exist before being removed.</span>
+                <input id="lifespan" class="config--lifespan" type="text" />
+              </label>    
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <footer class="layout__footer">
+      <h2 class="footer__title">Mimikri</h2>
+      <div class="footer__content">
+        <div class="footer__metadata">
+          <p class="footer__copyright">© Mimikri, all rights reserved.</p>
+          <div class="footer__social">
+            <a class="footer__social-icon" href="https://github.com/nght-owl" alt="NightOwl's GitHub"><img src="/icons/github.svg" loading="lazy" /></a>
+            <a class="footer__social-icon" href="https://nght-owl.github.io" alt="NightOwl's Personal Website"><img src="/icons/world.svg" loading="lazy" /></a>
+          </div>
+        </div>
+        <div class="footer__links-container">
+          <div class="footer__links">
+            <h3 class="footer__subtitle">Writings</h3>
+            <a href="/blog" i18n-nav i18n="blog">Blog</a>
+            <a href="/journal" i18n-nav i18n="journal">Journal</a>
+            <a href="/diary" i18n-nav i18n="diary">Diary</a>
+            <a href="/wiki.ng" i18n-nav i18n="wiking">wiki.ng</a>
+          </div>
+          <div class="footer__links">
+            <h3 class="footer__subtitle">Projects</h3>
+            <a href="/mimido">Mimido</a>
+            <a href="/#">Placeholder</a>
+          </div>
+        </div>
+      </div>
+      <nav class="footer__nav">
+        <a >
+      </nav>
+    </footer>
+    
+    <script>
+      document.getElementById('add-task').addEventListener('click', () => {
+        gsap.set('.modal__content', { scale: 0.2, opacity: 0 });
+        gsap.to('.modal__content', {
+          scale: 1,
+          opacity: 1,
+          duration: 1,
+          ease: 'power4.in'
+        });
+      });
+      
+      
+    </script>
+  </body>
+  </html>

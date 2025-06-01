@@ -1,0 +1,22 @@
+.layout__header {
+  
+}
+
+.header__meta {
+}
+
+#menu-toggle {
+  display: none;
+}
+
+.footer__content {
+  grid-template-columns: 1fr 1fr;
+}
+
+.footer__links-container {
+  flex-direction: row;
+}
+
+.footer__links {
+  flex: 1;
+}

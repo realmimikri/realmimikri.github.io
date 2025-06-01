@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="Mimikri's Portfolio Page" />
+  <meta name="author" content="mimi" />
+  
+  <title>Mimikri's Portfolio</title>
+  <!--
+      TODO: Fill icons when I already have the icons
+      <link rel="icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    -->
+  
+  <!-- ALL OF THIS ARE PRELOAD -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preload" as="style" type="text/css" href="/css/global.css" onload="this.onload = null; this.rel = 'stylesheet';" />
+  <link rel="preload" as="style" type="text/css" href="/css/home.css" onload="this.onload = null; this.rel = 'stylesheet';" />
+  <link rel="preload" as="style" type="text/css" href="/css/global_max768.css" onload="this.onload = null; this.rel = 'stylesheet'; this.media = '(max-width: 768px)';" />
+  <link rel="preload" as="style" type="text/css" href="/css/global_min768.css" onload="this.onload = null; this.rel = 'stylesheet'; this.media = '(min-width: 768px)';" />
+  <link rel="preload" href="/icons/menu.svg" as="image" type="image/svg+xml">
+  <link rel="preload" href="/icons/daylight.svg" as="image" type="image/svg+xml">
+  
+  <script>
+    window.Localizator = {
+      tryTranslateUnit: (unit) => {
+        Localizator.queue.push(unit);
+      },
+      queue: [],
+      COMING_SOON: true
+    }
+  </script>
+  <!-- <script i18n-sources="base/nav/home:hero,about,skills,works" src="/js/i18n.js" async></script> -->
+  
+  <noscript>
+    <link rel="stylesheet" type="text/css" href="/css/global.css" />
+    <link rel="stylesheet" type="text/css" href="/css/home.css" />
+    <link rel="stylesheet" type="text/css" href="/css/global_max768.css" media="(max-width: 768px)" />
+    <link rel="stylesheet" type="text/css" href="/css/global_min768.css" media="(min-width: 768px)" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css" />
+  </noscript>
+  
+  <meta property="og:title" content="Mimi's Portfolio" />
+  <meta property="og:description" content="Hello! I'm mimikri, but you can call me Mimi-san. I am a programmer who codes with a phone, life sucks." />
+  <meta property="og:url" content="https://realmimikri.github.io" />
+  
+  <meta name="google-site-verification" content="ybFYqjdr5BOwZmc2RrYvwUbkWDeaU0R_D6H-RtgI7ck" />
+  
+  <style>
+  .upward__container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1999;
+  }
+  
+  .chameleon {
+    position: absolute;
+    opacity: 0.8;
+    user-select: none;
+    left: -100vw;
+  }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollToPlugin.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/ScrollTrigger.min.js" defer onload="if(window.onpageload) onpageload();"></script>
+  <script src="/js/home.scroll.js" defer></script>
+  <script src="/js/home.nav.js" defer></script>
+  <script src="/js/home.landing.js" defer></script>
+</head>
+<body>
+  <script>
+    const isOnDarkMode = () => {
+      const fromlocalStorage = localStorage.getItem('dark-mode-enabled');
+      switch(fromlocalStorage) {
+        case 'false':
+        case 'true':
+          return fromlocalStorage === 'true';
+        default:
+          return window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+      }
+    }
+    
+    const toggleDarkMode = (toggle) => {
+      let isDarkModeEnabled = isOnDarkMode();
+      if(toggle) {
+        isDarkModeEnabled = !isDarkModeEnabled;
+        localStorage.setItem('dark-mode-enabled', isDarkModeEnabled);
+      }
+      
+      document
+        .documentElement
+        .classList
+        .toggle('dark', isDarkModeEnabled);
+    };
+    
+    toggleDarkMode(false);
+  </script>
+  
+  <header class="layout__header">
+    <div class="header__meta">
+      <a href="/" class="header__author">Mimikri</a>
+      <a href="#" class="header__title">Portfolio</a>
+    </div>
+    
+    <ul id="header-nav" class="header__nav">
+      <li class="header__nav-item">
+        <a href="/blog" class="nav__link hover hover--scale-up" i18n-nav i18n="blog">Blog</a>
+      </li>
+      <li class="header__nav-item">
+        <a href="/diary" class="nav__link hover hover--scale-up" i18n-nav i18n="diary">Diary</a>
+      </li>
+      <li class="header__nav-item">
+        <a href="/journal" class="nav__link hover hover--scale-up" i18n-nav i18n="journal">Journal</a>
+      </li>
+      <li class="header__nav-item">
+        <a href="/wiki.ng" class="nav__link hover hover--scale-up" i18n-nav i18n="wiking">Wiki.ng</a>
+      </li>
+    </ul>
+    
+    <div class="lang__menu"></div>
+    
+    <div class="header__buttons">
+      <img class="header__button" id="menu-toggle" role="button" src="/icons/menu.svg" loading="lazy" />
+      <img class="header__button" id="theme-toggle" role="button" src="/icons/daylight.svg" loading="lazy" / onclick="toggleDarkMode(true);" />
+      <img class="header__button" id="lang-toggle" role="button" width="40" src="https://flagcdn.com/us.svg">
+    </div>
+    
+    <script src="/js/mobile_hamburger.js" async></script>
+    <!-- <script src="/js/language_selector.js" async></script> -->
+    <script>Localizator.tryTranslateUnit('nav');</script>
+  </header>
+  
+  <div class="upward__container">
+    <img class="chameleon upward__item" height="5rem" width="5rem" src="/icons/chameleon.svg" width="5rem" height="5rem" loading="lazy" />
+  </div>
+  <script src="/js/upward_emitter.js" async onload="_upwardEmitter.init(5, 'fill', 2333, 300);"></script>
+ 
+  <div class="main__container">
+    <main class="layout__main">
+      <section class="section hero" id="hero">
+        <div>
+          <div class="hero__welcome">
+            <h1 class="hero__title"><span class="hoverable"><span i18n-hero i18n="greeting">Yo</span><span style="color: var(--color-text-muted);">!</span></span><br /><span class="hoverable"><span i18n-hero i18n="me">I'm</span> <span style="color: var(--color-accent);">Mimi</span>.</span><br /><span class="hoverable">A <span id="profession">Web Developer</span></span></h1>
+            <a class="button" href="mailto:realmimikri@outlook.com" target="_blank" i18n-hero i18n="contact">Contact Me</a>
+          </div>
+          <div class="hero__social hoverable">
+            <a class="hero__social-icon" href="https://github.com/realmimikri" alt="Mimikri's GitHub"><img src="/icons/github.svg" loading="lazy" /></a>
+            <a class="hero__social-icon" href="https://realmimikri.github.io" alt="Mimikri's Personal Website"><img src="/icons/world.svg" loading="lazy" /></a>
+          </div>
+        </div>
+        <script>Localizator.tryTranslateUnit('hero')</script>
+      </section>
+      <section class="section section--right about" id="about">
+        <div>
+          <h2 class="section__title hoverable" i18n-nav i18n="about">About</h2>
+          <div>
+            <h3 class="section__subtitle hoverable" i18n-about i18n="whoami">I am Mimi.</h3>
+            <p class="about__desc hoverable" i18n-about i18n="description-1">I loves anime. My hobby are doing nothing but shits.</p>
+            <p class="about__desc hoverable" i18n-about i18n="description-1">In the future, I have a dream of making my own operating system, game engine, and game.</p>
+          </div>
+        </div>
+        <script>Localizator.tryTranslateUnit('about')</script>
+      </section>
+      
+      <section class="section section--left skills" id="skills">
+        <div>
+          <h2 class="section__title hoverable" i18n-nav i18n="skills">Skills</h2>
+          <div class="skills__list">
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title skill__metadata--highlight">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bxl-html5 skill__icon"></i>HTML5</span>
+                  <span class="skill__percentage skill__percentage--highlight">95%</span>
+                </div>
+                <progress class="skill__progress" value="95" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="html5.description">HTML5 is the latest major version of the HTML standard, designed to structure and present content on the web more efficiently. It introduced new semantic elements (like &lt;article&gt;, &lt;section&gt;, &lt;header&gt;), built-in media support with &lt;audio&gt; and &lt;video&gt;, and powerful APIs for things like offline storage, drag-and-drop, geolocation, and canvas-based graphics. It also dropped outdated tags (like &lt;font&gt;) and emphasized cleaner, more accessible, and mobile-friendly code. In short: it made the web smarter, faster, and more app-like.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bxl-css3 skill__icon"></i>CSS3</span>
+                  <span class="skill__percentage skill__percentage--highlight">76%</span>
+                </div>
+                <progress class="skill__progress" value="76" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="css3.description">CSS3 is the latest evolution of Cascading Style Sheets, bringing powerful features that let developers create modern, responsive, and visually rich websites without relying heavily on JavaScript or images. It introduced modules like Flexbox and Grid for layout control, transitions and animations for smoother interactions, media queries for responsive design, and custom properties (variables) for cleaner, more maintainable code.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bxl-javascript skill__icon"></i>JS</span>
+                  <span class="skill__percentage skill__percentage--highlight">85%</span>
+                </div>
+                <progress class="skill__progress" value="85" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="javascript.description">JavaScript is the dynamic scripting language of the web, designed to bring interactivity, logic, and behavior to static HTML/CSS pages. It's used for everything from handling user input and updating content in real-time to building full-scale web apps, with powerful APIs, event-driven architecture, and widespread support across all modern browsers. With the rise of frameworks like React and Node.js, JavaScript has become the backbone of both frontend and backend development.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bx-code skill__icon"></i>C</span>
+                  <span class="skill__percentage skill__percentage--highlight">68%</span>
+                </div>
+                <progress class="skill__progress" value="68" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="clang.description">C is a low-level, high-performance programming language that gives you direct control over memory and system resources. Originally developed in the 1970s, it became the backbone of modern operating systems, embedded systems, and tools like compilers. With its minimal runtime and deterministic behavior, C is often chosen when speed, efficiency, and hardware-level access matter. It’s powerful but unforgiving — you manage your own memory, deal with pointers, and take full responsibility for safety.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bx-code-curly skill__icon"></i>C++</span>
+                  <span class="skill__percentage">12%</span>
+                </div>
+                <progress class="skill__progress" value="12" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="cpp.description">C++ builds on C by adding object-oriented programming, templates, exception handling, and more — effectively blending low-level control with high-level abstractions. It lets you write both system-level code and complex software architectures in the same language. Used in everything from game engines and real-time simulations to finance and high-performance apps, C++ is known for its performance, complexity, and massive feature set. It’s like driving a race car: powerful, fast, but it’ll bite you if you lose focus.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bx-code skill__icon"></i>Java</span>
+                  <span class="skill__percentage">78%</span>
+                </div>
+                <progress class="skill__progress" value="78" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="java.description">Java is a high-level, object-oriented language designed to be portable, secure, and easy to run across platforms — “write once, run anywhere.” It compiles to bytecode that runs on the Java Virtual Machine (JVM), making it platform-independent. Java has strict typing, garbage collection, and a massive standard library, which made it a go-to for enterprise software, Android development, and big systems. It's verbose but stable, with a strong ecosystem and long-term maintainability at its core.</p>
+            </details>
+            <details class="skills__skill hoverable">
+              <summary class="skills__skill-title">
+                <div class="skill__metadata">
+                  <span class="skill__name"><i class="bx bx-code-alt skill__icon"></i>Python</span>
+                  <span class="skill__percentage">5%</span>
+                </div>
+                <progress class="skill__progress" value="5" max="100"></progress>
+              </summary>
+              <p class="skill__desc" i18n-skills i18n="python.description">Python is a high-level, interpreted language known for its simplicity, readability, and massive versatility. With clean, human-like syntax, it’s beginner-friendly but powerful enough for professionals building everything from web apps and automation scripts to AI models and scientific computing. Python thrives on an enormous ecosystem of libraries and frameworks (like Django, NumPy, and TensorFlow), and its “batteries included” philosophy makes rapid development feel effortless. It trades raw speed for ease of use — but in the right hands, it’s a damn sharp tool.</p>
+            </details>
+          </div>
+        </div>
+        <script>Localizator.tryTranslateUnit('skills')</script>
+      </section>
+      <section class="section section--right work" id="work">
+        <div>
+          <h2 class="section__title hoverable" i18n-nav i18n="work">Works</h2>
+          <div class="card-list">
+            <div class="card hoverable">
+              <div class="card__image card__image--noimage" role="img" aria-label="Portfolio Project Preview"></div>
+              <h3 i18n-works i18n="portfolio">Portfolio</h3>
+              <p i18n-works i18n="portfolio.desc">This is my portfolio; this website.</p>
+            </div>
+          </div>
+        </div>
+        <script>Localizator.tryTranslateUnit('work')</script>
+      </section>
+    </main>
+  </div>
+  <footer class="layout__footer">
+    <h2 class="footer__title">Mimikri</h2>
+    <div class="footer__content">
+      <div class="footer__metadata">
+        <p class="footer__copyright">© Mimikri, all rights reserved.</p>
+        <div class="footer__social">
+          <a class="footer__social-icon" href="https://github.com/nght-owl" alt="NightOwl's GitHub"><img src="/icons/github.svg" loading="lazy" /></a>
+          <a class="footer__social-icon" href="https://nght-owl.github.io" alt="NightOwl's Personal Website"><img src="/icons/world.svg" loading="lazy" /></a>
+        </div>
+      </div>
+      <div class="footer__links-container">
+        <div class="footer__links">
+          <h3 class="footer__subtitle">Writings</h3>
+          <a href="/blog" i18n-nav i18n="blog">Blog</a>
+          <a href="/journal" i18n-nav i18n="journal">Journal</a>
+          <a href="/diary" i18n-nav i18n="diary">Diary</a>
+          <a href="/wiki.ng" i18n-nav i18n="wiking">wiki.ng</a>
+        </div>
+        <div class="footer__links">
+          <h3 class="footer__subtitle">Projects</h3>
+          <a href="/todolist.html">TODO List</a>
+          <a href="/#">Placeholder</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

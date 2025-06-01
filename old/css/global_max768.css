@@ -1,9 +1,4 @@
-.nav {
-  grid-template-columns: 1fr fit-content(100%);
-  grid-template-areas: 'title toggles';
-}
-
-.nav__menu {
+.header__nav, .lang__menu {
   position: absolute;
   background-color: var(--color-bg-alt);
   width: 100vw;
@@ -16,15 +11,6 @@
   z-index: -500;
 }
 
-.nav__title {
-  display: initial;
-  white-space: wrap;
-}
-
-.nav__author {
-  display: inline-block;
-}
-
-.nav__item {
+.header__nav-item {
   padding: 5% 5% 0 0;
 }

@@ -1,5 +1,5 @@
 function toggleNavVisibility() {
-  const nav = document.getElementById('nav-menu');
+  const nav = document.getElementById('header-nav');
   const isActive = nav.getBoundingClientRect().bottom > 0;
   
   document.body.style.overflowY = isActive ? 'initial' : 'hidden';
@@ -18,4 +18,4 @@ function toggleNavVisibility() {
   });
 }
 
-document.getElementById('nav-toggle').addEventListener('click', toggleNavVisibility);
+document.getElementById('menu-toggle').addEventListener('click', toggleNavVisibility);
