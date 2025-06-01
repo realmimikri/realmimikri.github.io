@@ -6,7 +6,7 @@
   const button  = $.id('quote-generate');
   const spinner = $.id('quote-spinner');
   const list    = $.id('quote-list');
-  const delay = new Promise((resolve) => setTimeout(resolve, 300));
+  const delay = () => new Promise((resolve) => setTimeout(resolve, 300));
   
   let cache = [];
   let cacheIndex = 0;
@@ -27,12 +27,17 @@
     button.disabled = true;
     spinner.classList.remove('hidden');
     
-    Promise.all([delay, getQuote()])
-    .then(([_, data]) => {
+    Promise.all([getQuote(), delay()])
+    .then(([data]) => {
       const fragment = document.createDocumentFragment();
       
-      for(let i = 0; i < 5; i++) {
+      for(let i = 0, limit = 5; i < limit; i++) {
         const quote = data[i];
+        if(!quote) {
+          limit++;
+          if(limit >= 50) break;
+        }
+        
         const li = document.createElement('li');
         li.textContent = `${quote.q} — ${quote.a}`;
         fragment.append(li);
@@ -47,18 +52,14 @@
       
       throttle = false;
     })
-    .catch(console.error);
+    .catch((err) => {
+      showToast(err.message || err.toString(), { type: 'error', closable: true });
+      console.error(err);
+    });
   });
   
   async function getQuote() {
-    if(generateCount === 0 || cacheIndex === 50) {
-      try {
-        return await fetchQuote();
-      } catch(err) {
-        showToast(err.message || err.toString(), { type: 'error', closable: true });
-        throw err;
-      }
-    }
+    if(generateCount === 0 || cacheIndex === 50) return await fetchQuote();
     else return retrieveCachedQuote();
   }
   
